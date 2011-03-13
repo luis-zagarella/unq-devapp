@@ -49,6 +49,13 @@
 					</configuration>
 				</plugin>
 				<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<argLine>-Duser.language=es -Duser.country=AR -DforkMode=never</argLine>
+						</configuration>
+					</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.4.1</version>
@@ -126,12 +133,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.6</version>
+					
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>2.6</version>
+					
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -164,7 +171,7 @@
 					<executions>
 						<execution>
 							<goals>
-								<goal>check</goal>
+								<goal>checkstyle</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -288,8 +295,8 @@
 				<configuration>
 					<effort>Max</effort>
 					<threshold>High</threshold>
-					<excludeFilterFile>${basedir}/standards/findbugs-exclude.xml</excludeFilterFile>
-					<includeFilterFile>${basedir}/standards/findbugs-include.xml</includeFilterFile>
+					<excludeFilterFile>${basedir}/standards/UNQ_findbugs-exclude.xml</excludeFilterFile>
+					<includeFilterFile>${basedir}/standards/UNQ_findbugs-include.xml</includeFilterFile>
 				</configuration>
 			</plugin>
 			
@@ -342,6 +349,11 @@
 					<minimumTokens>125</minimumTokens>
 					<targetJdk>${targetJdkVersion}</targetJdk>
 					<verbose>true</verbose>
+					 
+                    <failOnError>false</failOnError>
+					<failOnViolation>false</failOnViolation>
+					
+                    
 				</configuration>
 			</plugin>
 			<plugin>
@@ -377,8 +389,8 @@
 				<configuration>
 					<xmlOutput>true</xmlOutput>
 					<findbugsXmlOutput>true</findbugsXmlOutput>
-					<excludeFilterFile>${basedir}/standards/findbugs-exclude.xml</excludeFilterFile>
-					<includeFilterFile>${basedir}/standards/findbugs-include.xml</includeFilterFile>
+					<excludeFilterFile>${basedir}/standards/UNQ_findbugs-exclude.xml</excludeFilterFile>
+					<includeFilterFile>${basedir}/standards/UNQ_findbugs-include.xml</includeFilterFile>
 				</configuration>
 			</plugin>
 			<plugin>
