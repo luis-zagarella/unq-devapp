@@ -6,11 +6,11 @@ package ar.edu.unq.examples;
  */
 public class ObscureIntentExample {
 
-	private int iThsWkd;
-	private int iThsRte;
+    private int iThsWkd;
 
-	public int m_otCalc() {
-		return (iThsWkd * iThsRte + (int) Math.round(0.5 * iThsRte
-				* Math.max(0, iThsWkd - 400)));
-	}
+    private int iThsRte;
+
+    public int m_otCalc() {
+        return iThsWkd * iThsRte + (int) Math.round(0.5 * iThsRte * Math.max(0, iThsWkd - 400));
+    }
 }

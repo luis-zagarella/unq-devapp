@@ -10,44 +10,47 @@ import java.util.Date;
  */
 public class DecomposeConditional {
 
-	private static final Date WINTER_START = null;
-	private static final Date WINTER_END = null;
+    private static final Date WINTER_START = null;
 
-	private static final int WINTER_RATE = 100;
-	private static final int NORMAL_RATE = 10;
-	private static final int WINTER_SERVICE_CHARGE = 55;
+    private static final Date WINTER_END = null;
 
-	double chargeFor_v1(Date date, int quantity) {
-		double totalCharge = 0;
-		if (date.after(WINTER_START) || date.before(WINTER_END)) {
-			totalCharge = quantity * WINTER_RATE + WINTER_SERVICE_CHARGE;
-		} else {
-			totalCharge = quantity * NORMAL_RATE;
-		}
-		return totalCharge;
-	}
+    private static final int WINTER_RATE = 100;
 
-	double chargeFor_v2(Date date, int quantity) {
-		if (isAWinter(date)) {
-			return winterCharge(quantity);
-		}
-		return normalCharge(quantity);
-	}
+    private static final int NORMAL_RATE = 10;
 
-	double chargeFor_v3(Date date, int quantity) {
-		return isAWinter(date) ? winterCharge(quantity) : normalCharge(quantity);
-	}
+    private static final int WINTER_SERVICE_CHARGE = 55;
 
-	private double normalCharge(int quantity) {
-		return quantity * NORMAL_RATE;
-	}
+    double chargeFor_v1(final Date date, final int quantity) {
+        double totalCharge = 0;
+        if (date.after(WINTER_START) || date.before(WINTER_END)) {
+            totalCharge = quantity * WINTER_RATE + WINTER_SERVICE_CHARGE;
+        } else {
+            totalCharge = quantity * NORMAL_RATE;
+        }
+        return totalCharge;
+    }
 
-	private double winterCharge(int quantity) {
-		return quantity * WINTER_RATE + WINTER_SERVICE_CHARGE;
-	}
+    double chargeFor_v2(final Date date, final int quantity) {
+        if (this.isAWinter(date)) {
+            return this.winterCharge(quantity);
+        }
+        return this.normalCharge(quantity);
+    }
 
-	private boolean isAWinter(Date date) {
-		return date.after(WINTER_START) || date.before(WINTER_END);
-	}
+    double chargeFor_v3(final Date date, final int quantity) {
+        return this.isAWinter(date) ? this.winterCharge(quantity) : this.normalCharge(quantity);
+    }
+
+    private double normalCharge(final int quantity) {
+        return quantity * NORMAL_RATE;
+    }
+
+    private double winterCharge(final int quantity) {
+        return quantity * WINTER_RATE + WINTER_SERVICE_CHARGE;
+    }
+
+    private boolean isAWinter(final Date date) {
+        return date.after(WINTER_START) || date.before(WINTER_END);
+    }
 
 }

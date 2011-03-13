@@ -9,159 +9,164 @@ package ar.edu.unq.refactoring;
 @SuppressWarnings("unused")
 public class ExtractClass {
 
-	class Person_v1 {
+    class Person_v1 {
 
-		private String name;
+        private String name;
 
-		private String officeAreaCode;
-		private String officeNumber;
+        private String officeAreaCode;
 
-		public String getName() {
-			return name;
-		}
+        private String officeNumber;
 
-		public String getTelephoneNumber() {
-			return ("(" + officeAreaCode + ") " + officeNumber);
-		}
+        public String getName() {
+            return name;
+        }
 
-		String getOfficeAreaCode() {
-			return officeAreaCode;
-		}
+        public String getTelephoneNumber() {
+            return "(" + officeAreaCode + ") " + officeNumber;
+        }
 
-		void setOfficeAreaCode(String arg) {
-			officeAreaCode = arg;
-		}
+        String getOfficeAreaCode() {
+            return officeAreaCode;
+        }
 
-		String getOfficeNumber() {
-			return officeNumber;
-		}
+        void setOfficeAreaCode(final String arg) {
+            officeAreaCode = arg;
+        }
 
-		void setOfficeNumber(String arg) {
-			officeNumber = arg;
-		}
+        String getOfficeNumber() {
+            return officeNumber;
+        }
 
-	}
+        void setOfficeNumber(final String arg) {
+            officeNumber = arg;
+        }
 
-	/**
-	 * La inversa ir del v2 al v1 es InlineClass.
-	 */
-	class Person_v2 {
+    }
 
-		private String name;
+    /**
+     * La inversa ir del v2 al v1 es InlineClass.
+     */
+    class Person_v2 {
 
-		private TelephoneNumber officeTelephone;
+        private String name;
 
-		public String getName() {
-			return name;
-		}
+        private TelephoneNumber officeTelephone;
 
-		public String getTelephoneNumber() {
-			return officeTelephone.getTelephoneNumber();
-		}
+        public String getName() {
+            return name;
+        }
 
-		TelephoneNumber getOfficeTelephone() {
-			return officeTelephone;
-		}
+        public String getTelephoneNumber() {
+            return officeTelephone.getTelephoneNumber();
+        }
 
-	}
+        TelephoneNumber getOfficeTelephone() {
+            return officeTelephone;
+        }
 
-	class TelephoneNumber {
-		private String number;
-		private String areaCode;
+    }
 
-		public String getTelephoneNumber() {
-			return ("(" + areaCode + ") " + number);
-		}
+    class TelephoneNumber {
+        private String number;
 
-		String getAreaCode() {
-			return areaCode;
-		}
+        private String areaCode;
 
-		void setAreaCode(String arg) {
-			areaCode = arg;
-		}
+        public String getTelephoneNumber() {
+            return "(" + areaCode + ") " + number;
+        }
 
-		String getNumber() {
-			return number;
-		}
+        String getAreaCode() {
+            return areaCode;
+        }
 
-		void setNumber(String arg) {
-			number = arg;
-		}
+        void setAreaCode(final String arg) {
+            areaCode = arg;
+        }
 
-	}
+        String getNumber() {
+            return number;
+        }
 
-	class Page_v1 {
+        void setNumber(final String arg) {
+            number = arg;
+        }
 
-		private String[] lines;
+    }
 
-		private double widthNumber;
-		private String widthUnits;
+    class Page_v1 {
 
-		private double heightNumber;
-		private String heightUnits;
+        private String[] lines;
 
-		/**
-		 * return the page area in inches.
-		 */
-		public double area() {
-			double widthInches;
-			double heightInches;
+        private double widthNumber;
 
-			widthInches = widthNumber * ((widthUnits.equals("mm")) ? 25.4 : 1.0);
-			heightInches = heightNumber * ((heightUnits.equals("mm")) ? 25.4 : 1.0);
+        private String widthUnits;
 
-			return widthInches * heightInches;
-		}
-	}
+        private double heightNumber;
 
-	class Page_v2 {
+        private String heightUnits;
 
-		private String[] lines;
+        /**
+         * return the page area in inches.
+         */
+        public double area() {
+            double widthInches;
+            double heightInches;
 
-		private Length width;
+            widthInches = widthNumber * (widthUnits.equals("mm") ? 25.4 : 1.0);
+            heightInches = heightNumber * (heightUnits.equals("mm") ? 25.4 : 1.0);
 
-		private Length height;
+            return widthInches * heightInches;
+        }
+    }
 
-		public Length area() {
-			return width.multipliedBy(height);
-		}
+    class Page_v2 {
 
-	}
+        private String[] lines;
 
-	static class Length {
+        private Length width;
 
-		private final double magnitude;
-		private final Unit unit;
+        private Length height;
 
-		public Length(Unit unit, double magnitude) {
-			this.unit = unit;
-			this.magnitude = magnitude;
-		}
+        public Length area() {
+            return width.multipliedBy(height);
+        }
 
-		public Length multipliedBy(Length aLength) {
-			return Length.newInInches(this.magnitudeInInches() + aLength.magnitudeInInches());
-		}
+    }
 
-		private static Length newInInches(double magnitudeInInches) {
-			return new Length(Unit.inches, magnitudeInInches);
-		}
+    static class Length {
 
-		private double magnitudeInInches() {
-			return magnitude;
-		}
+        private final double magnitude;
 
-		private double magnitudeInMM() {
-			return magnitude * Unit.mmFactor();
-		}
-	}
+        private final Unit unit;
 
-	enum Unit {
-		mm, inches;
+        public Length(final Unit unit, final double magnitude) {
+            this.unit = unit;
+            this.magnitude = magnitude;
+        }
 
-		public static double mmFactor() {
-			return 25.4;
-		}
-	}
+        public Length multipliedBy(final Length aLength) {
+            return Length.newInInches(this.magnitudeInInches() + aLength.magnitudeInInches());
+        }
+
+        private static Length newInInches(final double magnitudeInInches) {
+            return new Length(Unit.inches, magnitudeInInches);
+        }
+
+        private double magnitudeInInches() {
+            return magnitude;
+        }
+
+        private double magnitudeInMM() {
+            return magnitude * Unit.mmFactor();
+        }
+    }
+
+    enum Unit {
+        mm, inches;
+
+        public static double mmFactor() {
+            return 25.4;
+        }
+    }
 
 }

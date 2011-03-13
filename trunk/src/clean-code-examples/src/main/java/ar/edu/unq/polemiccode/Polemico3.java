@@ -9,52 +9,52 @@ import java.util.Map;
 @SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 public class Polemico3 {
 
-	private List completarDiasFaltantesyBorra(List datos, DatoAsignacion example, Date fechaInicial, Date fechaFinal,
-			Map referentes) {
+    private List completarDiasFaltantesyBorra(final List datos, final DatoAsignacion example, final Date fechaInicial,
+            final Date fechaFinal, final Map referentes) {
 
-		Iterator iter = datos.iterator();
-		while (iter.hasNext()) {
-			DatoAsignacionPorPunto element = (DatoAsignacionPorPunto) iter.next();
-			if (!referentes.containsKey(element.getReferente_AA_AA())) {
-				iter.remove();
-			}
-		}
+        Iterator iter = datos.iterator();
+        while (iter.hasNext()) {
+            DatoAsignacionPorPunto element = (DatoAsignacionPorPunto) iter.next();
+            if (!referentes.containsKey(element.getReferente_AA_AA())) {
+                iter.remove();
+            }
+        }
 
-		Iterator iter2 = datos.iterator();
-		boolean bPrimeraVez = true;
-		String refAnterior = null;
-		ArrayList tempList = new ArrayList();
-		ArrayList tempFinal = new ArrayList();
+        Iterator iter2 = datos.iterator();
+        boolean bPrimeraVez = true;
+        String refAnterior = null;
+        ArrayList tempList = new ArrayList();
+        ArrayList tempFinal = new ArrayList();
 
-		while (iter2.hasNext()) {
-			DatoAsignacionPorPunto element = (DatoAsignacionPorPunto) iter2.next();
-			if (bPrimeraVez) {
-				refAnterior = element.getReferente_AA_AA();
-				tempList.add(element);
-				bPrimeraVez = false;
-			} else {
-				if (!refAnterior.equals(element.getReferente_AA_AA())) {
-					// Cambio de refente
+        while (iter2.hasNext()) {
+            DatoAsignacionPorPunto element = (DatoAsignacionPorPunto) iter2.next();
+            if (bPrimeraVez) {
+                refAnterior = element.getReferente_AA_AA();
+                tempList.add(element);
+                bPrimeraVez = false;
+            } else {
+                if (!refAnterior.equals(element.getReferente_AA_AA())) {
+                    // Cambio de refente
 
-					this.completarDiasFaltantes(tempList, example, fechaInicial, fechaFinal, refAnterior);
-					tempFinal.addAll(tempList);
-					refAnterior = element.getReferente_AA_AA();
-					tempList.clear();
-				}
-				tempList.add(element);
-			}
-		}
-		if (tempList.size() > 0) {
-			this.completarDiasFaltantes(tempList, example, fechaInicial, fechaFinal, refAnterior);
-			tempFinal.addAll(tempList);
-		}
+                    this.completarDiasFaltantes(tempList, example, fechaInicial, fechaFinal, refAnterior);
+                    tempFinal.addAll(tempList);
+                    refAnterior = element.getReferente_AA_AA();
+                    tempList.clear();
+                }
+                tempList.add(element);
+            }
+        }
+        if (tempList.size() > 0) {
+            this.completarDiasFaltantes(tempList, example, fechaInicial, fechaFinal, refAnterior);
+            tempFinal.addAll(tempList);
+        }
 
-		// Devuelvo la lista completa
-		return tempFinal;
+        // Devuelvo la lista completa
+        return tempFinal;
 
-	}
+    }
 
-	//@formatter:off
+    //@formatter:off
 	
 	
 	
@@ -85,8 +85,8 @@ public class Polemico3 {
 
 	}
 
-	private void completarDiasFaltantes(ArrayList tempList, DatoAsignacion example, Date fechaInicial, Date fechaFinal,
-			String refAnterior) {
+	private void completarDiasFaltantes(final ArrayList tempList, final DatoAsignacion example, final Date fechaInicial, final Date fechaFinal,
+			final String refAnterior) {
 		throw new UnsupportedOperationException();
 	}
 

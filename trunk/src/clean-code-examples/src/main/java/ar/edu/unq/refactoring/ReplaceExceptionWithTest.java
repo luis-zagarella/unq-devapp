@@ -8,46 +8,48 @@ import java.util.Stack;
  */
 public class ReplaceExceptionWithTest {
 
-	static class ResourcePool_v1 {
+    static class ResourcePool_v1 {
 
-		Stack<Resource> available;
-		Stack<Resource> allocated;
+        Stack<Resource> available;
 
-		Resource getResource() {
-			Resource result;
-			try {
-				result = available.pop();
-				allocated.push(result);
-				return result;
-			} catch (EmptyStackException e) {
-				result = new Resource();
-				allocated.push(result);
-				return result;
-			}
-		}
+        Stack<Resource> allocated;
 
-	}
+        Resource getResource() {
+            Resource result;
+            try {
+                result = available.pop();
+                allocated.push(result);
+                return result;
+            } catch (EmptyStackException e) {
+                result = new Resource();
+                allocated.push(result);
+                return result;
+            }
+        }
 
-	static class ResourcePool_v2 {
+    }
 
-		Stack<Resource> available;
-		Stack<Resource> allocated;
+    static class ResourcePool_v2 {
 
-		Resource getResource() {
-			Resource result;
-			if (available.isEmpty()) {
-				result = new Resource();
-			} else {
-				result = available.pop();
-			}
-			allocated.push(result);
-			return result;
-		}
+        Stack<Resource> available;
 
-	}
+        Stack<Resource> allocated;
 
-	static class Resource {
+        Resource getResource() {
+            Resource result;
+            if (available.isEmpty()) {
+                result = new Resource();
+            } else {
+                result = available.pop();
+            }
+            allocated.push(result);
+            return result;
+        }
 
-	}
+    }
+
+    static class Resource {
+
+    }
 
 }

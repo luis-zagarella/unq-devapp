@@ -7,36 +7,36 @@ import java.util.List;
 @SuppressWarnings("rawtypes")
 public class Polemico5 {
 
-	public RecordKeeper selectAjustesMedicion(Date fechaDesde, Date fechaHasta, boolean descartados) {
-		String descartadosParam = descartados ? "D" : "N";
+    public RecordKeeper selectAjustesMedicion(final Date fechaDesde, final Date fechaHasta, final boolean descartados) {
+        String descartadosParam = descartados ? "D" : "N";
 
-		List ajustes = this.getRepository().executeNamedQuery("ajustesMedicion",
-				new Object[] { descartadosParam, fechaDesde, fechaHasta });
+        List ajustes = this.getRepository().executeNamedQuery("ajustesMedicion",
+                new Object[] { descartadosParam, fechaDesde, fechaHasta });
 
-		Collections.sort(ajustes, new Comparator() {
-			@Override
-			public int compare(Object o1, Object o2) {
-				int result;
-				AjusteMedicion a1 = (AjusteMedicion) o1;
-				AjusteMedicion a2 = (AjusteMedicion) o2;
-				result = a1.getRolPunto().compareTo(a2.getRolPunto());
-				if (result == 0) {
-					result = a1.getCodigoZona().compareTo(a2.getCodigoZona());
-				}
-				if (result == 0) {
-					result = a1.getFecha().compareTo(a2.getFecha());
-				}
-				if (result == 0) {
-					result = a1.getNumeroPunto().compareTo(a2.getNumeroPunto());
-				}
-				return result;
-			}
-		});
+        Collections.sort(ajustes, new Comparator() {
+            @Override
+            public int compare(final Object o1, final Object o2) {
+                int result;
+                AjusteMedicion a1 = (AjusteMedicion) o1;
+                AjusteMedicion a2 = (AjusteMedicion) o2;
+                result = a1.getRolPunto().compareTo(a2.getRolPunto());
+                if (result == 0) {
+                    result = a1.getCodigoZona().compareTo(a2.getCodigoZona());
+                }
+                if (result == 0) {
+                    result = a1.getFecha().compareTo(a2.getFecha());
+                }
+                if (result == 0) {
+                    result = a1.getNumeroPunto().compareTo(a2.getNumeroPunto());
+                }
+                return result;
+            }
+        });
 
-		return new RecordKeeper(ajustes);
-	}
+        return new RecordKeeper(ajustes);
+    }
 
-	//@formatter:off
+    //@formatter:off
 	
 	
 	
@@ -75,7 +75,7 @@ public class Polemico5 {
 
 	public static class Collections {
 
-		public static void sort(List ajustes, Comparator comparator) {
+		public static void sort(final List ajustes, final Comparator comparator) {
 			throw new UnsupportedOperationException();
 		}
 
@@ -83,7 +83,7 @@ public class Polemico5 {
 
 	public class RecordKeeper {
 
-		public RecordKeeper(List ajustes) {
+		public RecordKeeper(final List ajustes) {
 			throw new UnsupportedOperationException();
 		}
 
@@ -95,7 +95,7 @@ public class Polemico5 {
 
 	class Repository {
 
-		public List executeNamedQuery(String string, Object[] objects) {
+		public List executeNamedQuery(final String string, final Object[] objects) {
 			throw new UnsupportedOperationException();
 		}
 

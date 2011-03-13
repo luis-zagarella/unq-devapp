@@ -14,64 +14,68 @@ import ar.edu.unq.refactoring.support.Range;
 @SuppressWarnings("unused")
 public class ReplacePrimitiveWithObject {
 
-	static class Loan_v1 {
-		private static double minAmount = 100;
-		private static double maxAmount = 5000;
+    static class Loan_v1 {
+        private static double minAmount = 100;
 
-		private final Client client;
-		private final double amountToLoan;
+        private static double maxAmount = 5000;
 
-		public Loan_v1(Client aClient, double amount) {
-			client = aClient;
-			checkAmountToLoan(amount);
-			amountToLoan = amount;
-		}
+        private final Client client;
 
-		private void checkAmountToLoan(double amount) {
-			if (amount < minAmount || maxAmount < amount) {
-				throw new RuntimeException("the loan can not be ... etc");
-			}
-		}
+        private final double amountToLoan;
 
-		// ...
-	}
+        public Loan_v1(final Client aClient, final double amount) {
+            client = aClient;
+            this.checkAmountToLoan(amount);
+            amountToLoan = amount;
+        }
 
-	// Montana rusa (?)
-	static class RollerCoaster_v1 {
-		private static int minAge = 13;
-		private static int maxAge = 40;
+        private void checkAmountToLoan(final double amount) {
+            if (amount < minAmount || maxAmount < amount) {
+                throw new RuntimeException("the loan can not be ... etc");
+            }
+        }
 
-		public void admit(Person person) {
-			if (person.age < minAge || maxAge < person.age) {
-				throw new RuntimeException("no esta en el rango de edad permitido");
-			}
-		}
+        // ...
+    }
 
-		// ...
-	}
+    // Montana rusa (?)
+    static class RollerCoaster_v1 {
+        private static int minAge = 13;
 
-	static class Loan_v2 {
-		private static Range<Double> rangeOfAllowedAmount = new Range<Double>(100.0, 5000.0);
+        private static int maxAge = 40;
 
-		private final Client client;
-		private final double amountToLoan;
+        public void admit(final Person person) {
+            if (person.age < minAge || maxAge < person.age) {
+                throw new RuntimeException("no esta en el rango de edad permitido");
+            }
+        }
 
-		public Loan_v2(Client aClient, double amount) {
-			client = aClient;
-			checkAmountToLoan(amount);
-			amountToLoan = amount;
-		}
+        // ...
+    }
 
-		private void checkAmountToLoan(double amount) {
-			if (rangeOfAllowedAmount.notIncludes(amount)) {
-				throw new RuntimeException("the loan can not be ... etc");
-			}
-		}
+    static class Loan_v2 {
+        private static Range<Double> rangeOfAllowedAmount = new Range<Double>(100.0, 5000.0);
 
-		// ...
-	}
+        private final Client client;
 
-	//@formatter:off
+        private final double amountToLoan;
+
+        public Loan_v2(final Client aClient, final double amount) {
+            client = aClient;
+            this.checkAmountToLoan(amount);
+            amountToLoan = amount;
+        }
+
+        private void checkAmountToLoan(final double amount) {
+            if (rangeOfAllowedAmount.notIncludes(amount)) {
+                throw new RuntimeException("the loan can not be ... etc");
+            }
+        }
+
+        // ...
+    }
+
+    //@formatter:off
 	static class Loan_v3 {
 		private static Range<Money> rangeOfAllowedAmount 
 			= new Range<Money>(Money.dollars(100), Money.dollars(5000));
@@ -79,13 +83,13 @@ public class ReplacePrimitiveWithObject {
 		private final Client client;
 		private final Money amountToLoan;
 
-		public Loan_v3(Client aClient, Money amount) {
+		public Loan_v3(final Client aClient, final Money amount) {
 			client = aClient;
-			checkAmountToLoan(amount);
+			this.checkAmountToLoan(amount);
 			amountToLoan = amount;
 		}
 
-		private void checkAmountToLoan(Money amount) {
+		private void checkAmountToLoan(final Money amount) {
 			if (rangeOfAllowedAmount.notIncludes(amount)) {
 				throw new RuntimeException("the loan can not be ... etc");
 			}
@@ -98,7 +102,7 @@ public class ReplacePrimitiveWithObject {
 	static class RollerCoaster_v2 {
 		private static Range<Integer> rangeOfAllowedAge = new Range<Integer>(13, 40);
 
-		public void admit(Person person) {
+		public void admit(final Person person) {
 			if (rangeOfAllowedAge.notIncludes(person.age)) {
 				throw new RuntimeException("no esta en el rango de edad permitido");
 			}
@@ -117,12 +121,12 @@ public class ReplacePrimitiveWithObject {
 
 	static class Money implements Comparable<Money> {
 
-		public static Money dollars(int i) {
+		public static Money dollars(final int i) {
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public int compareTo(Money o) {
+		public int compareTo(final Money o) {
 			throw new UnsupportedOperationException();
 		}
 

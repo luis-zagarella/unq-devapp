@@ -3,7 +3,6 @@ package ar.edu.unq.examples.aroundmethod;
 import ar.edu.unq.doit.DoInBlock;
 import ar.edu.unq.examples.aroundmethod.ExecuteAroundMethodExamples.Repository;
 
-
 public class ExecuteAroundMethod2Examples {
 
     public void execute(final String param) {

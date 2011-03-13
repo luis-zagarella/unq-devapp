@@ -13,203 +13,205 @@ import javax.swing.JTextField;
  */
 public class IntroduceNullObject {
 
-	class Person_v1 {
+    class Person_v1 {
 
-		private String name;
+        private String name;
 
-		private MailAddress_v1 mailAddress;
+        private MailAddress_v1 mailAddress;
 
-		public MailAddress_v1 getMailAddress() {
-			return mailAddress;
-		}
+        public MailAddress_v1 getMailAddress() {
+            return mailAddress;
+        }
 
-		public void setMail(MailAddress_v1 mailAddress) {
-			this.mailAddress = mailAddress;
-		}
+        public void setMail(final MailAddress_v1 mailAddress) {
+            this.mailAddress = mailAddress;
+        }
 
-		// ..
-	}
+        // ..
+    }
 
-	static class MailAddress_v1 implements MailAddress {
+    static class MailAddress_v1 implements MailAddress {
 
-		private final String userName;
+        private final String userName;
 
-		private final String domain;
+        private final String domain;
 
-		public MailAddress_v1(String userName, String domain) {
-			this.userName = userName;
-			this.domain = domain;
-		}
+        public MailAddress_v1(final String userName, final String domain) {
+            this.userName = userName;
+            this.domain = domain;
+        }
 
-		public static MailAddress from(String aString) {
-			return new MailAddress_v1(parseUserNameFrom(aString), parseDomainFrom(aString));
-		}
+        public static MailAddress from(final String aString) {
+            return new MailAddress_v1(parseUserNameFrom(aString), parseDomainFrom(aString));
+        }
 
-		@Override
-		public String toString() {
-			return userName + "@" + domain;
-		}
+        @Override
+        public String toString() {
+            return userName + "@" + domain;
+        }
 
-		@Override
-		public String getUserName() {
-			return userName;
-		}
+        @Override
+        public String getUserName() {
+            return userName;
+        }
 
-		@Override
-		public String getDomain() {
-			return domain;
-		}
+        @Override
+        public String getDomain() {
+            return domain;
+        }
 
-		private static String parseDomainFrom(String aString) {
-			throw new UnsupportedOperationException();
-		}
+        private static String parseDomainFrom(final String aString) {
+            throw new UnsupportedOperationException();
+        }
 
-		private static String parseUserNameFrom(String aString) {
-			throw new UnsupportedOperationException();
-		}
+        private static String parseUserNameFrom(final String aString) {
+            throw new UnsupportedOperationException();
+        }
 
-	}
+    }
 
-	public interface MailAddress {
-		String getUserName();
+    public interface MailAddress {
+        String getUserName();
 
-		String getDomain();
-	}
+        String getDomain();
+    }
 
-	class AboutPersonWindow_v1 {
+    class AboutPersonWindow_v1 {
 
-		private JTextField mailAddressTextField;
-		private JTextField nameTextField;
+        private JTextField mailAddressTextField;
 
-		private Person_v1 person;
+        private JTextField nameTextField;
 
-		public void render() {
-			// ...
-			nameTextField.setText(person.name);
+        private Person_v1 person;
 
-			if (person.getMailAddress() != null) {
-				mailAddressTextField.setText(person.getMailAddress().toString());
-			}
+        public void render() {
+            // ...
+            nameTextField.setText(person.name);
 
-			// ...
-		}
+            if (person.getMailAddress() != null) {
+                mailAddressTextField.setText(person.getMailAddress().toString());
+            }
 
-	}
+            // ...
+        }
 
-	class XMLExporter_v1 {
+    }
 
-		private List<Person_v1> persons;
+    class XMLExporter_v1 {
 
-		public void export() {
-			// ...
+        private List<Person_v1> persons;
 
-			for (Person_v1 person : persons) {
-				print("<person>");
-				// ..
+        public void export() {
+            // ...
 
-				print("<mailAddress>");
-				if (person.getMailAddress() != null) {
-					print(person.getMailAddress().toString());
-				} else {
-					print("-");
-				}
-				print("</mailAddress>");
+            for (Person_v1 person : persons) {
+                this.print("<person>");
+                // ..
 
-				// ..
-				print("</person>");
-			}
+                this.print("<mailAddress>");
+                if (person.getMailAddress() != null) {
+                    this.print(person.getMailAddress().toString());
+                } else {
+                    this.print("-");
+                }
+                this.print("</mailAddress>");
 
-			// ...
+                // ..
+                this.print("</person>");
+            }
 
-		}
+            // ...
 
-		private void print(String aString) {
-			// ...
-		}
-	}
+        }
 
-	// con nullobject
+        private void print(final String aString) {
+            // ...
+        }
+    }
 
-	class Person_v2 {
+    // con nullobject
 
-		private String name;
+    class Person_v2 {
 
-		private MailAddress mailAddress = new NullMailAddress();
+        private String name;
 
-		public MailAddress getMailAddress() {
-			return mailAddress;
-		}
+        private MailAddress mailAddress = new NullMailAddress();
 
-		public void setMail(MailAddress mailAddress) {
-			this.mailAddress = mailAddress;
-		}
+        public MailAddress getMailAddress() {
+            return mailAddress;
+        }
 
-		// ..
-	}
+        public void setMail(final MailAddress mailAddress) {
+            this.mailAddress = mailAddress;
+        }
 
-	class NullMailAddress implements MailAddress {
+        // ..
+    }
 
-		@Override
-		public String toString() {
-			return "-";
-		}
+    class NullMailAddress implements MailAddress {
 
-		@Override
-		public String getUserName() {
-			return "-";
-		}
+        @Override
+        public String toString() {
+            return "-";
+        }
 
-		@Override
-		public String getDomain() {
-			return "-";
-		}
+        @Override
+        public String getUserName() {
+            return "-";
+        }
 
-	}
+        @Override
+        public String getDomain() {
+            return "-";
+        }
 
-	class AboutPersonWindow_v2 {
+    }
 
-		private JTextField mailAddressTextField;
-		private JTextField nameTextField;
+    class AboutPersonWindow_v2 {
 
-		private Person_v2 person;
+        private JTextField mailAddressTextField;
 
-		public void render() {
-			// ...
-			nameTextField.setText(person.name);
+        private JTextField nameTextField;
 
-			mailAddressTextField.setText(person.getMailAddress().toString());
+        private Person_v2 person;
 
-			// ...
-		}
+        public void render() {
+            // ...
+            nameTextField.setText(person.name);
 
-	}
+            mailAddressTextField.setText(person.getMailAddress().toString());
 
-	class XMLExporter_v2 {
+            // ...
+        }
 
-		private List<Person_v2> persons;
+    }
 
-		public void export() {
-			// ...
+    class XMLExporter_v2 {
 
-			for (Person_v2 person : persons) {
-				print("<person>");
-				// ..
+        private List<Person_v2> persons;
 
-				print("<mailAddress>");
-				print(person.getMailAddress().toString());
-				print("</mailAddress>");
+        public void export() {
+            // ...
 
-				// ..
-				print("</person>");
-			}
+            for (Person_v2 person : persons) {
+                this.print("<person>");
+                // ..
 
-			// ...
+                this.print("<mailAddress>");
+                this.print(person.getMailAddress().toString());
+                this.print("</mailAddress>");
 
-		}
+                // ..
+                this.print("</person>");
+            }
 
-		private void print(String aString) {
-			// ...
-		}
-	}
+            // ...
+
+        }
+
+        private void print(final String aString) {
+            // ...
+        }
+    }
 
 }

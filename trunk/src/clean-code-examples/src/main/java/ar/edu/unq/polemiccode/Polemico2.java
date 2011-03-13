@@ -16,8 +16,9 @@ public class Polemico2 {
 
         List messages = new ArrayList();
 
-        if (contratoDTO.getFechaInicialContrato().after(contratoDTO.getFechaFinalContrato()))
+        if (contratoDTO.getFechaInicialContrato().after(contratoDTO.getFechaFinalContrato())) {
             throw new ServiceException(messageSource.getMessage("periodoInvalido"));
+        }
 
         if (contratoDTO.getReference().isTransient()) {
 
@@ -32,13 +33,15 @@ public class Polemico2 {
 
             List contratos = this.selectContratosAsBO(TipoContrato.OP, EstadoContrato.ACTIVO, contratoDTO
                     .getEntidadLegal().getReference());
-            if (contratos != null && !contratos.isEmpty())
+            if (contratos != null && !contratos.isEmpty()) {
                 throw new ServiceException(messageSource.getMessage("entidad-legal-con-contrato",
                         new Object[] { ((Contrato) contratos.get(0)).getCodigo() }));
+            }
         }
 
-        if (contratoDTO.getPuntos().size() == 0)
+        if (contratoDTO.getPuntos().size() == 0) {
             throw new ServiceException(messageSource.getMessage("contrato_sin_puntos"));
+        }
 
         // Se validan todos los puntos del contrato
 
@@ -87,13 +90,14 @@ public class Polemico2 {
                     contratoDTO.getFechaFinalContrato());
             if (!srv.getReturnValue().booleanValue()) {
 
-                messages.add("Punto N° " + ptoCtrto.getPunto().getNumeroPunto().toString());
+                messages.add("Punto Nro " + ptoCtrto.getPunto().getNumeroPunto().toString());
                 messages.addAll(srv.getMessages());
                 isValid = false;
             }
         }
-        if (!isValid)
+        if (!isValid) {
             throw new ServiceException(messages);
+        }
 
         Contrato contrato = this.getDtoService().disassemble(contratoDTO);
 
