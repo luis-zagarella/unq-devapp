@@ -12,6 +12,12 @@
 	<version>0.1-SNAPSHOT</version>
 	</parent>
 	
+		
+	<scm>
+		<connection>scm:svn:https://unq-devapp.googlecode.com/svn/trunk/src/clean-code-examples</connection>
+		<url>https://unq-devapp.googlecode.com/svn/trunk/src/clean-code-examples</url>
+	</scm>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
