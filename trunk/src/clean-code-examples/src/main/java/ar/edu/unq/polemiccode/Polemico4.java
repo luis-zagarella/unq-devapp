@@ -25,9 +25,8 @@ public class Polemico4 {
             } else if (ReportType.EXCEL.equals(reportType)) {
                 rf = reportFileBuilder.getXlsReportFile("recepcionYEntrega", parameters, rscw,
                         AsignacionServiceImpl.REPORT_COLUMNS_RECEPCION_Y_ENTREGA);
-            } else {
+            } else
                 throw new IllegalArgumentException("");
-            }
             se = new ServiceExecution(rf, ServiceExecutionStatus.OK);
         } else {
             se = new ServiceExecution(null, ServiceExecutionStatus.FAILED);
@@ -41,6 +40,7 @@ public class Polemico4 {
         ServiceExecution se = null;
 
         ResultSetCollectionWrapper rscw = new ResultSetCollectionWrapper(resultSet);
+
         if (rscw.size() > 0) {
             Map parameters = new HashMap();
             parameters.put("fechaDesde", fechaDesde);
@@ -52,9 +52,8 @@ public class Polemico4 {
             } else if (ReportType.EXCEL.equals(reportType)) {
                 rf = reportFileBuilder.getXlsReportFile("asignacionPorContratoDeOperador", parameters, rscw,
                         AsignacionServiceImpl.REPORT_COLUMNS_ASIG_CTRTO_OPER);
-            } else {
+            } else
                 throw new IllegalArgumentException("bla bla");
-            }
             se = new ServiceExecution(rf, ServiceExecutionStatus.OK);
         } else {
             se = new ServiceExecution(null, ServiceExecutionStatus.FAILED);
@@ -78,9 +77,8 @@ public class Polemico4 {
             } else if (ReportType.EXCEL.equals(reportType)) {
                 rf = reportFileBuilder.getXlsReportFile("puntosDeRTP", parameters, rscw,
                         this.columnasPuntosRTP(fechaDesde, fechaHasta));
-            } else {
+            } else
                 throw new IllegalArgumentException("");
-            }
             se = new ServiceExecution(rf, ServiceExecutionStatus.OK);
         } else {
             se = new ServiceExecution(null, ServiceExecutionStatus.FAILED);
@@ -106,10 +104,9 @@ public class Polemico4 {
                 } else if (ReportType.EXCEL.equals(reportType)) {
                     ret = reportFileBuilder.getXlsReportFile("distribuidorasEntregas", parameters, resultSet,
                             AsignacionServiceImpl.REPORT_COLUMNS_DISTRIBUIDORAS_ENTREGAS);
-                } else {
+                } else
                     throw new IllegalArgumentException(
                             "No se puede generar el reporte DistribuidorasEntregas de tipo '" + reportType + "'.");
-                }
             }
 
             return ret;
