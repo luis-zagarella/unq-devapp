@@ -48,37 +48,4 @@
 	
 	
 	
-
-<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<configuration>
-					<formats>
-						<format>html</format>
-						<format>xml</format>
-					</formats>
-					<instrumentation>
-						<!--  EXCLUDE - class is not instrumented -->
-						<excludes>
-							
-							<exclude>**/*Abstract*</exclude>
-							
-						</excludes>
-					</instrumentation>
-					<check>
-						<haltOnFailure>false</haltOnFailure>
-						<branchRate>80</branchRate>
-						<totalBranchRate>80</totalBranchRate>
-						<lineRate>80</lineRate>
-						<totalLineRate>80</totalLineRate>
-						<packageLineRate>80</packageLineRate>
-						<packageBranchRate>80</packageBranchRate>
-					</check>
-				</configuration>
-			</plugin>
-			
-		</plugins>
-	</reporting>
 </project>
