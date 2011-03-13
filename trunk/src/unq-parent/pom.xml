@@ -286,6 +286,7 @@
               <report>scm</report>
             </reports>
           </reportSet>
+		  			</reportSets>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
