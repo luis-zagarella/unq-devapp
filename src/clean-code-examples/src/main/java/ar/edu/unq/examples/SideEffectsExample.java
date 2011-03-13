@@ -11,19 +11,19 @@ import ar.edu.unq.examples.ext.User;
  */
 public class SideEffectsExample {
 
-	private Cryptographer cryptographer;
+    private Cryptographer cryptographer;
 
-	public boolean checkPassword(final User user, final String password) {
-		Phrase userCodedPhrase = user.getPhraseEncodedByPassword();
+    public boolean checkPassword(final User user, final String password) {
+        Phrase userCodedPhrase = user.getPhraseEncodedByPassword();
 
-		Phrase phrase = cryptographer.decryp(password);
+        Phrase phrase = cryptographer.decryp(password);
 
-		if (phrase.sameAs(userCodedPhrase)) {
-			Session.initialize();
-			return true;
-		}
+        if (phrase.sameAs(userCodedPhrase)) {
+            Session.initialize();
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
 }

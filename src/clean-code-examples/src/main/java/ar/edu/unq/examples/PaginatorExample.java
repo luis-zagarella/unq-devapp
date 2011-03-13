@@ -6,46 +6,48 @@ import ar.edu.unq.examples.ext.Element;
 
 public class PaginatorExample {
 
-	int cacheOffset;
-	int cacheSize;
-	List<Element> cachedElements;
+    int cacheOffset;
 
-	public List<Element> nextFrom(final int offset, final int size) {
-		if (cacheNeedsRePopulation(offset, size)) {
-			repopulateCache(offset, size);
-		}
-		return nextFromCache(offset, size);
-	}
+    int cacheSize;
 
-	private boolean cacheNeedsRePopulation(final int offset, final int size) {
-		return requestIsUnderCacheWindow(offset, size) || requestIsOverCacheWindow(offset);
-	}
+    List<Element> cachedElements;
 
-	private boolean requestIsOverCacheWindow(final int offset) {
-		return offset < cacheOffset;
-	}
+    public List<Element> nextFrom(final int offset, final int size) {
+        if (this.cacheNeedsRePopulation(offset, size)) {
+            this.repopulateCache(offset, size);
+        }
+        return this.nextFromCache(offset, size);
+    }
 
-	private boolean requestIsUnderCacheWindow(final int offset, final int size) {
-		return (offset + size) > (cacheOffset + cacheSize);
-	}
+    private boolean cacheNeedsRePopulation(final int offset, final int size) {
+        return this.requestIsUnderCacheWindow(offset, size) || this.requestIsOverCacheWindow(offset);
+    }
 
-	private List<Element> nextFromCache(final int offset, final int size) {
-		throw new UnsupportedOperationException();
-	}
+    private boolean requestIsOverCacheWindow(final int offset) {
+        return offset < cacheOffset;
+    }
 
-	private void repopulateCache(final int offset, final int size) {
-		throw new UnsupportedOperationException();
-	}
+    private boolean requestIsUnderCacheWindow(final int offset, final int size) {
+        return offset + size > cacheOffset + cacheSize;
+    }
 
-	// /////////////////////////////////////////////////////////////////
-	// /////////////////////////////////////////////////////////////////
-	// /////////////////////////////////////////////////////////////////
+    private List<Element> nextFromCache(final int offset, final int size) {
+        throw new UnsupportedOperationException();
+    }
 
-	public List<Element> nextFrom2(final int offset, final int size) {
-		if (((offset + size) > (cacheOffset + cacheSize)) || (offset < cacheOffset)) {
-			repopulateCache(offset, size);
-		}
-		return nextFromCache(offset, size);
-	}
+    private void repopulateCache(final int offset, final int size) {
+        throw new UnsupportedOperationException();
+    }
+
+    // /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+
+    public List<Element> nextFrom2(final int offset, final int size) {
+        if (offset + size > cacheOffset + cacheSize || offset < cacheOffset) {
+            this.repopulateCache(offset, size);
+        }
+        return this.nextFromCache(offset, size);
+    }
 
 }

@@ -8,144 +8,144 @@ import ar.edu.unq.examples.statements.support.Status;
 
 public class ErrorCodes {
 
-	public ErrorCode casosDeExcepYNormalesIntercalados(String inputFileName, Status status) {
-		ErrorCode errorCode = ErrorCode.NONE;
+    public ErrorCode casosDeExcepYNormalesIntercalados(final String inputFileName, final Status status) {
+        ErrorCode errorCode = ErrorCode.NONE;
 
-		File file = openFile(inputFileName, status);
-		if (status == Status.ERROR) {
-			errorCode = ErrorCode.FileOpenError;
-		} else {
-			FileData data = readFile(file, status);
-			if (status == Status.SUCCESS) {
-				FileData summary = summarizeFileData(data, status);
-				if (status == Status.ERROR) {
-					errorCode = ErrorCode.DataSummaryError;
-				} else {
-					printSummary(summary);
-					saveSummary(summary, status);
-					if (status == Status.ERROR) {
-						errorCode = ErrorCode.SummarySaveError;
-					} else {
-						updateAllAccounts();
-						eraseUndoFile();
-					}
-				}
-			} else {
-				errorCode = ErrorCode.FileReadError;
-			}
-		}
-		return errorCode;
-	}
+        File file = this.openFile(inputFileName, status);
+        if (status == Status.ERROR) {
+            errorCode = ErrorCode.FileOpenError;
+        } else {
+            FileData data = this.readFile(file, status);
+            if (status == Status.SUCCESS) {
+                FileData summary = this.summarizeFileData(data, status);
+                if (status == Status.ERROR) {
+                    errorCode = ErrorCode.DataSummaryError;
+                } else {
+                    this.printSummary(summary);
+                    this.saveSummary(summary, status);
+                    if (status == Status.ERROR) {
+                        errorCode = ErrorCode.SummarySaveError;
+                    } else {
+                        this.updateAllAccounts();
+                        this.eraseUndoFile();
+                    }
+                }
+            } else {
+                errorCode = ErrorCode.FileReadError;
+            }
+        }
+        return errorCode;
+    }
 
-	public ErrorCode casosNormalesPrimero(String inputFileName, Status status) {
-		ErrorCode errorCode = ErrorCode.NONE;
+    public ErrorCode casosNormalesPrimero(final String inputFileName, final Status status) {
+        ErrorCode errorCode = ErrorCode.NONE;
 
-		File file = openFile(inputFileName, status);
-		if (status == Status.SUCCESS) {
-			FileData data = readFile(file, status);
-			if (status == Status.SUCCESS) {
-				FileData summary = summarizeFileData(data, status);
-				if (status == Status.SUCCESS) {
-					printSummary(summary);
-					saveSummary(summary, status);
-					if (status == Status.SUCCESS) {
-						updateAllAccounts();
-						eraseUndoFile();
-					} else {
-						errorCode = ErrorCode.SummarySaveError;
-					}
-				} else {
-					errorCode = ErrorCode.DataSummaryError;
-				}
-			} else {
-				errorCode = ErrorCode.FileReadError;
-			}
-		} else {
-			errorCode = ErrorCode.FileOpenError;
-		}
+        File file = this.openFile(inputFileName, status);
+        if (status == Status.SUCCESS) {
+            FileData data = this.readFile(file, status);
+            if (status == Status.SUCCESS) {
+                FileData summary = this.summarizeFileData(data, status);
+                if (status == Status.SUCCESS) {
+                    this.printSummary(summary);
+                    this.saveSummary(summary, status);
+                    if (status == Status.SUCCESS) {
+                        this.updateAllAccounts();
+                        this.eraseUndoFile();
+                    } else {
+                        errorCode = ErrorCode.SummarySaveError;
+                    }
+                } else {
+                    errorCode = ErrorCode.DataSummaryError;
+                }
+            } else {
+                errorCode = ErrorCode.FileReadError;
+            }
+        } else {
+            errorCode = ErrorCode.FileOpenError;
+        }
 
-		return errorCode;
-	}
+        return errorCode;
+    }
 
-	public ErrorCode conGuardas(String inputFileName, Status status) {
-		File file = openFile(inputFileName, status);
-		if (status == Status.ERROR) {
-			return ErrorCode.NONE;
-		}
+    public ErrorCode conGuardas(final String inputFileName, final Status status) {
+        File file = this.openFile(inputFileName, status);
+        if (status == Status.ERROR) {
+            return ErrorCode.NONE;
+        }
 
-		FileData data = readFile(file, status);
-		if (status == Status.ERROR) {
-			return ErrorCode.FileReadError;
-		}
+        FileData data = this.readFile(file, status);
+        if (status == Status.ERROR) {
+            return ErrorCode.FileReadError;
+        }
 
-		FileData summary = summarizeFileData(data, status);
-		if (status == Status.ERROR) {
-			return ErrorCode.DataSummaryError;
-		}
+        FileData summary = this.summarizeFileData(data, status);
+        if (status == Status.ERROR) {
+            return ErrorCode.DataSummaryError;
+        }
 
-		printSummary(summary);
-		saveSummary(summary, status);
-		if (status == Status.ERROR) {
-			return ErrorCode.SummarySaveError;
-		}
+        this.printSummary(summary);
+        this.saveSummary(summary, status);
+        if (status == Status.ERROR) {
+            return ErrorCode.SummarySaveError;
+        }
 
-		updateAllAccounts();
-		eraseUndoFile();
+        this.updateAllAccounts();
+        this.eraseUndoFile();
 
-		return ErrorCode.NONE;
-	}
+        return ErrorCode.NONE;
+    }
 
-	void usandoExcpetions(String inputFileName) {
-		File file = openFile(inputFileName);
-		FileData data = readFile(file);
-		FileData summary = summarizeFileData(data);
-		printSummary(summary);
-		saveSummary(summary);
-		updateAllAccounts();
-		eraseUndoFile();
-	}
+    void usandoExcpetions(final String inputFileName) {
+        File file = this.openFile(inputFileName);
+        FileData data = this.readFile(file);
+        FileData summary = this.summarizeFileData(data);
+        this.printSummary(summary);
+        this.saveSummary(summary);
+        this.updateAllAccounts();
+        this.eraseUndoFile();
+    }
 
-	private void printSummary(FileData summary) {
-		throw new UnsupportedOperationException();
-	}
+    private void printSummary(final FileData summary) {
+        throw new UnsupportedOperationException();
+    }
 
-	private void saveSummary(FileData summary) {
-		throw new UnsupportedOperationException();
-	}
+    private void saveSummary(final FileData summary) {
+        throw new UnsupportedOperationException();
+    }
 
-	private FileData summarizeFileData(FileData data) {
-		throw new UnsupportedOperationException();
-	}
+    private FileData summarizeFileData(final FileData data) {
+        throw new UnsupportedOperationException();
+    }
 
-	private FileData readFile(File file) {
-		throw new UnsupportedOperationException();
-	}
+    private FileData readFile(final File file) {
+        throw new UnsupportedOperationException();
+    }
 
-	private File openFile(String inputFileName) {
-		throw new UnsupportedOperationException();
-	}
+    private File openFile(final String inputFileName) {
+        throw new UnsupportedOperationException();
+    }
 
-	private void eraseUndoFile() {
-		throw new UnsupportedOperationException();
-	}
+    private void eraseUndoFile() {
+        throw new UnsupportedOperationException();
+    }
 
-	private void updateAllAccounts() {
-		throw new UnsupportedOperationException();
-	}
+    private void updateAllAccounts() {
+        throw new UnsupportedOperationException();
+    }
 
-	private void saveSummary(FileData summary, Status status) {
-		throw new UnsupportedOperationException();
-	}
+    private void saveSummary(final FileData summary, final Status status) {
+        throw new UnsupportedOperationException();
+    }
 
-	private FileData summarizeFileData(FileData data, Status status) {
-		throw new UnsupportedOperationException();
-	}
+    private FileData summarizeFileData(final FileData data, final Status status) {
+        throw new UnsupportedOperationException();
+    }
 
-	private File openFile(String inputFileName, Status status) {
-		throw new UnsupportedOperationException();
-	}
+    private File openFile(final String inputFileName, final Status status) {
+        throw new UnsupportedOperationException();
+    }
 
-	private FileData readFile(File inputFile, Status status) {
-		throw new UnsupportedOperationException();
-	}
+    private FileData readFile(final File inputFile, final Status status) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -11,50 +11,51 @@ import java.util.Arrays;
  */
 public class IntroduceExplainingMethod {
 
-	private final String platform = "IE";
-	private final int resize = 1;
+    private final String platform = "IE";
 
-	//@formatter:off
+    private final int resize = 1;
+
+    //@formatter:off
 	public void before() {
-		if ((platform.toUpperCase().indexOf("MAC") > -1) 
-				&& (platform.toUpperCase().indexOf("IE") > -1)
-				&& wasInitialized() 
+		if (platform.toUpperCase().indexOf("MAC") > -1 
+				&& platform.toUpperCase().indexOf("IE") > -1
+				&& this.wasInitialized() 
 				&& resize > 0) {
 
-			someCode();
+			this.someCode();
 		} 
-		otherCode();
+		this.otherCode();
 	}
 
 	// @formatter:on
-	public void after() {
-		if (isMacOs() && isIEBrowser() && wasInitialized() && wasResized()) {
-			someCode();
-		}
-		otherCode();
-	}
+    public void after() {
+        if (this.isMacOs() && this.isIEBrowser() && this.wasInitialized() && this.wasResized()) {
+            this.someCode();
+        }
+        this.otherCode();
+    }
 
-	// @formatter:on
-	public void after2() {
-		if (isPlatformSupported() && wasInitialized() && wasResized()) {
-			someCode();
-		}
-		otherCode();
-	}
+    // @formatter:on
+    public void after2() {
+        if (this.isPlatformSupported() && this.wasInitialized() && this.wasResized()) {
+            this.someCode();
+        }
+        this.otherCode();
+    }
 
-	// @formatter:off
+    // @formatter:off
 	public void after3() {
-		if (satisfiesAll(
-				isPlatformSupported(), 
-				wasInitialized(), 
-				wasResized())) {
+		if (this.satisfiesAll(
+				this.isPlatformSupported(), 
+				this.wasInitialized(), 
+				this.wasResized())) {
 			
-			someCode();
+			this.someCode();
 		}
-		otherCode();
+		this.otherCode();
 	}
 
-	private boolean satisfiesAll(boolean... exp) {
+	private boolean satisfiesAll(final boolean... exp) {
 		return !Arrays.asList(exp).contains(false);
 	}
 
@@ -63,7 +64,7 @@ public class IntroduceExplainingMethod {
 	}
 
 	private boolean isPlatformSupported() {
-		return isMacOs() && isIEBrowser();
+		return this.isMacOs() && this.isIEBrowser();
 	}
 	
 	private boolean isIEBrowser() {
