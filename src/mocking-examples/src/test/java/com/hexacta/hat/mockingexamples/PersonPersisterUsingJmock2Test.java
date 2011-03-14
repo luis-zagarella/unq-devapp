@@ -18,7 +18,7 @@ import org.jmock.lib.legacy.ClassImposteriser;
  */
 public class PersonPersisterUsingJmock2Test extends TestCase {
 
-    public void testPersonPersister() throws Exception {
+    public void testPersonPersister() {
         Mockery context = new Mockery();
 
         final Repository repositoryMock = context.mock(Repository.class);
@@ -27,11 +27,15 @@ public class PersonPersisterUsingJmock2Test extends TestCase {
 
         PersonPersister persister = new PersonPersisterImpl(repositoryMock);
 
-        context.checking(new Expectations() {
-            {
-                this.oneOf(repositoryMock).persists(aPerson);
-            }
-        });
+        try {
+            context.checking(new Expectations() {
+                {
+                    this.oneOf(repositoryMock).persists(aPerson);
+                }
+            });
+        } catch (RepositoryException e) {
+            throw new UnsupportedOperationException();
+        }
 
         persister.save(aPerson);
 
@@ -59,6 +63,7 @@ public class PersonPersisterUsingJmock2Test extends TestCase {
             persister.save(aPerson);
             fail("should thrown a PersistenceException");
         } catch (PersistenceException e) {
+            // Test success
         }
 
         context.assertIsSatisfied();
