@@ -3,6 +3,7 @@
  */
 package com.hexacta.hat.mockingexamples;
 
+// CHECKSTYLE:OFF
 import static org.mockito.Mockito.*;
 
 import java.util.Date;
