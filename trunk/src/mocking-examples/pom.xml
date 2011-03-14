@@ -5,7 +5,7 @@
 	<artifactId>mocking-examples</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>mocking-examples</name>
+	
 	<url>http://maven.apache.org</url>
 
 	<parent>
