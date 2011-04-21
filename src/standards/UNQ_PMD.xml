@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="eclipse_formatter_profile_PMD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
-   <description>PMD Plugin preferences rule set</description>
+<ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="UNQ_PMD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
+   <description>UNQ</description>
    <rule ref="rulesets/typeresolution.xml/LooseCoupling"/>
    <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable"/>
    <rule ref="rulesets/typeresolution.xml/UnusedImports"/>
@@ -111,7 +111,9 @@
    <rule ref="rulesets/optimizations.xml/SimplifyStartsWith"/>
    <rule ref="rulesets/optimizations.xml/UseStringBufferForStringAppends"/>
    <rule ref="rulesets/optimizations.xml/UseArraysAsList"/>
-   <rule ref="rulesets/optimizations.xml/AvoidArrayLoops"/>
+   <rule ref="rulesets/optimizations.xml/AvoidArrayLoops">
+      <priority>5</priority>
+   </rule>
    <rule ref="rulesets/optimizations.xml/UnnecessaryWrapperObjectCreation"/>
    <rule ref="rulesets/optimizations.xml/AddEmptyString"/>
    <rule ref="rulesets/basic.xml/EmptyCatchBlock"/>
@@ -156,7 +158,12 @@
    <rule ref="rulesets/imports.xml/DontImportJavaLang"/>
    <rule ref="rulesets/imports.xml/UnusedImports"/>
    <rule ref="rulesets/imports.xml/ImportFromSamePackage"/>
-   <rule ref="rulesets/imports.xml/TooManyStaticImports"/>
+   <rule ref="rulesets/imports.xml/TooManyStaticImports">
+        <properties>
+         <property name="maximumStaticImports" value="15"/>
+      </properties>
+   </rule>
+   
    <rule ref="rulesets/junit.xml/JUnitStaticSuite"/>
    <rule ref="rulesets/junit.xml/JUnitSpelling"/>
    <rule ref="rulesets/junit.xml/JUnitAssertionsShouldIncludeMessage"/>
