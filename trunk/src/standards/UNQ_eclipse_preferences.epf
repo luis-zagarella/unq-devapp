@@ -1,4 +1,4 @@
-#Fri Apr 22 18:10:33 GMT-03:00 2011
+#Fri Apr 22 20:41:29 GMT-03:00 2011
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.codeComplete.staticFieldPrefixes=
 /instance/org.eclipse.jdt.ui/cleanup.make_parameters_final=true
 /instance/org.eclipse.jdt.ui/cleanup.always_use_parentheses_in_expressions=false
@@ -29,7 +29,7 @@ file_export_version=3.0
 \!/=
 /instance/org.eclipse.jdt.ui/cleanup.sort_members=false
 /instance/org.eclipse.jdt.ui/cleanup.use_this_for_non_static_field_access_only_if_necessary=true
-/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.staticondemandthreshold=2
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.staticondemandthreshold=10
 /instance/org.eclipse.jdt.ui/cleanup.never_use_parentheses_in_expressions=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.codeComplete.fieldSuffixes=
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.codeComplete.localSuffixes=
