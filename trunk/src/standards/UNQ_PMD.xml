@@ -192,14 +192,30 @@
    <rule ref="rulesets/controversial.xml/AvoidUsingNativeCode"/>
    <rule ref="rulesets/controversial.xml/AvoidAccessibilityAlteration"/>
    <rule ref="rulesets/controversial.xml/DoNotCallGarbageCollectionExplicitly"/>
-   <rule ref="rulesets/naming.xml/ShortVariable"/>
+   <rule ref="rulesets/naming.xml/ShortVariable">
+      <properties>
+         <property name="xpath">
+            <value><![CDATA[//VariableDeclaratorId[string-length(@Image) < 2]
+
+ [not(ancestor::ForInit)]
+
+ [not((ancestor::FormalParameter) and (ancestor::TryStatement))]]]></value>
+         </property>
+      </properties>
+   </rule>
    <rule ref="rulesets/naming.xml/LongVariable">
       <properties>
          <property name="minimum" value="40"/>
          <property name="maximum" value="40"/>
       </properties>
    </rule>
-   <rule ref="rulesets/naming.xml/ShortMethodName"/>
+   <rule ref="rulesets/naming.xml/ShortMethodName">
+      <properties>
+         <property name="xpath">
+            <value><![CDATA[//MethodDeclarator[string-length(@Image) < 2]]]></value>
+         </property>
+      </properties>
+   </rule>
    <rule ref="rulesets/naming.xml/VariableNamingConventions"/>
    <rule ref="rulesets/naming.xml/MethodNamingConventions"/>
    <rule ref="rulesets/naming.xml/ClassNamingConventions"/>
