@@ -1,5 +1,3 @@
 <FindBugsFilter>
-    <!--<Match>
-    <Bug category="BAD_PRACTICE"/>
-  </Match>-->
+
 </FindBugsFilter>
