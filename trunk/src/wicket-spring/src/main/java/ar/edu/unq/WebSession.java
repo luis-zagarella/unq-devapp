@@ -10,9 +10,6 @@ public class WebSession extends AuthenticatedWebSession {
         super(request);
     }
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
