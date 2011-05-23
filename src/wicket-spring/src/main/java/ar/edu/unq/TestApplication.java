@@ -10,15 +10,14 @@ public class TestApplication extends AuthenticatedWebApplication{
 	
 	private ar.edu.unq.MounterURL aMounterURL;
 	
-	
-	private ServiceGeneral generalService;
+	private GeneralService generalService;
 
 
-	public ServiceGeneral getGeneralService() {
+	public GeneralService getGeneralService() {
 		return generalService;
 	}
 
-	public void setGeneralService(ServiceGeneral generalService) {
+	public void setGeneralService(GeneralService generalService) {
 		this.generalService = generalService;
 	}
 
@@ -26,10 +25,10 @@ public class TestApplication extends AuthenticatedWebApplication{
 			
 	}
 	
-	public void init(){
+	@Override
+    public void init(){
 		aMounterURL = new MounterURL(this);
 		this.addComponentInstantiationListener(new SpringComponentInjector(this));
-		//this.mountUrl("home", Home.class);
 	}
 
 	private void mountUrl(String mountPath, Class<? extends WebPage> pageClass,
@@ -38,7 +37,6 @@ public class TestApplication extends AuthenticatedWebApplication{
 	}
 	@Override
 	protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
-		// TODO Auto-generated method stub
 		return WebSession.class;
 	}
 
