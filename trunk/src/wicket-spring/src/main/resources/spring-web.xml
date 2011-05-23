@@ -27,7 +27,9 @@
 
 	<bean id="service.general" class="ar.edu.unq.ServiceGeneral" />
 
-	<bean id="unBean" class="ar.edu.unq.BeanEjemplo" />
+	<bean id="unBean" class="ar.edu.unq.BeanEjemplo">
+			<property name="show" value="ejemplo de wicket-spring en Desarrollo de Aplicaciones" /> 
+	</bean>
 
 
 
