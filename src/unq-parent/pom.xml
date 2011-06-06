@@ -245,7 +245,6 @@
 			
 		</plugins>
 	</build>
-
 	<reporting>
 		
 		<plugins>
