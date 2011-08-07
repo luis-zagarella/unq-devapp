@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="UNQ_PMD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
+<ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="UNQ_PMD_new" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
    <description>UNQ</description>
    <rule ref="rulesets/typeresolution.xml/LooseCoupling"/>
    <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable"/>
@@ -160,7 +160,7 @@
    <rule ref="rulesets/imports.xml/ImportFromSamePackage"/>
    <rule ref="rulesets/imports.xml/TooManyStaticImports">
       <properties>
-         <property name="maximumStaticImports" value="15"/>
+         <property name="maximumStaticImports" value="20"/>
       </properties>
    </rule>
    <rule ref="rulesets/junit.xml/JUnitStaticSuite"/>
@@ -236,11 +236,21 @@
    <rule ref="rulesets/naming.xml/PackageCase"/>
    <rule ref="rulesets/naming.xml/MisleadingVariableName"/>
    <rule ref="rulesets/naming.xml/BooleanGetMethodName"/>
-   <rule ref="rulesets/codesize.xml/NPathComplexity"/>
+   <rule ref="rulesets/codesize.xml/NPathComplexity">
+    <properties>
+         <property name="minimum" value="260"/>
+      </properties>
+   </rule>
+
    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength"/>
    <rule ref="rulesets/codesize.xml/ExcessiveParameterList"/>
    <rule ref="rulesets/codesize.xml/ExcessiveClassLength"/>
-   <rule ref="rulesets/codesize.xml/CyclomaticComplexity"/>
+   <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+    <properties>
+         <property name="reportLevel" value="14"/>
+      </properties>
+   </rule>
+
    <rule ref="rulesets/codesize.xml/ExcessivePublicCount"/>
    <rule ref="rulesets/codesize.xml/TooManyFields">
       <properties>
@@ -252,7 +262,7 @@
    <rule ref="rulesets/codesize.xml/NcssConstructorCount"/>
    <rule ref="rulesets/codesize.xml/TooManyMethods">
       <properties>
-         <property name="maxmethods" value="34"/>
+         <property name="maxmethods" value="40"/>
       </properties>
    </rule>
    <rule ref="rulesets/finalizers.xml/EmptyFinalizer"/>
