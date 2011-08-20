@@ -12,6 +12,7 @@
   <property name="severity" value="warning"/>
   <module name="TreeWalker">
     <property name="tabWidth" value="4"/>
+	<property name="cacheFile" value="target/cachefile"/>
     <module name="FileContentsHolder"/>
     <module name="JavadocMethod">
       <property name="severity" value="ignore"/>
