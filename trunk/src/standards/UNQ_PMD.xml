@@ -63,7 +63,6 @@
    <rule ref="rulesets/strictexception.xml/AvoidRethrowingException"/>
    <rule ref="rulesets/strictexception.xml/DoNotExtendJavaLangError"/>
    <rule ref="rulesets/strictexception.xml/DoNotThrowExceptionInFinally"/>
-   <rule ref="rulesets/unusedcode.xml/UnusedPrivateField"/>
    <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable"/>
    <rule ref="rulesets/unusedcode.xml/UnusedPrivateMethod"/>
    <rule ref="rulesets/unusedcode.xml/UnusedFormalParameter"/>
@@ -179,9 +178,6 @@
    <rule ref="rulesets/controversial.xml/NullAssignment"/>
    <rule ref="rulesets/controversial.xml/UnusedModifier"/>
    <rule ref="rulesets/controversial.xml/AssignmentInOperand"/>
-   <rule ref="rulesets/controversial.xml/AtLeastOneConstructor">
-      <priority>5</priority>
-   </rule>
    <rule ref="rulesets/controversial.xml/DontImportSun"/>
    <rule ref="rulesets/controversial.xml/SuspiciousOctalEscape"/>
    <rule ref="rulesets/controversial.xml/CallSuperInConstructor"/>
