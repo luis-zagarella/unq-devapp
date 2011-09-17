@@ -29,6 +29,10 @@ public class TestApplication extends AuthenticatedWebApplication{
     public void init(){
 		aMounterURL = new MounterURL(this);
 		this.addComponentInstantiationListener(new SpringComponentInjector(this));
+		this.mountUrl("link/link", Home.class, null);
+		this.mountUrl("maldito", Home.class, null);
+
+		
 	}
 
 	private void mountUrl(String mountPath, Class<? extends WebPage> pageClass,
