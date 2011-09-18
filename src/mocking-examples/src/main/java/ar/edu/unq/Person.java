@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hexacta.hat.mockingexamples;
+package ar.edu.unq;
 
 import java.util.Date;
 
