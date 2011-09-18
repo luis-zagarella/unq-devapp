@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hexacta.hat.mockingexamples;
+package ar.edu.unq;
 
 import java.util.Date;
 
@@ -10,6 +10,13 @@ import junit.framework.TestCase;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
+
+import ar.edu.unq.PersistenceException;
+import ar.edu.unq.Person;
+import ar.edu.unq.PersonPersister;
+import ar.edu.unq.PersonPersisterImpl;
+import ar.edu.unq.Repository;
+import ar.edu.unq.RepositoryException;
 
 /**
  * Prueba de jmock2.

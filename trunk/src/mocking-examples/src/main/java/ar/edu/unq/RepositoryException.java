@@ -1,4 +1,4 @@
-package com.hexacta.hat.mockingexamples;
+package ar.edu.unq;
 
 /**
  * @author diego

@@ -1,12 +1,19 @@
 /**
  * 
  */
-package com.hexacta.hat.mockingexamples;
+package ar.edu.unq;
 
 // CHECKSTYLE:OFF
 import static org.mockito.Mockito.*;
 
 import java.util.Date;
+
+import ar.edu.unq.PersistenceException;
+import ar.edu.unq.Person;
+import ar.edu.unq.PersonPersister;
+import ar.edu.unq.PersonPersisterImpl;
+import ar.edu.unq.Repository;
+import ar.edu.unq.RepositoryException;
 
 import junit.framework.TestCase;
 
