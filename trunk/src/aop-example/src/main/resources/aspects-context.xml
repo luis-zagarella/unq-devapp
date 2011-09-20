@@ -13,11 +13,12 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 		<property name="dialogo" value="Necesito un jabon .." />
 	</bean>
 
-	<bean id="afterMalaOnda" class="ar.edu.unq.aop.aspects.MalaOndaAfterAspect" />
 
-	<bean id="beforeMalaOnda" class="ar.edu.unq.aop.aspects.MalaOndaBeforeAspect" />
+		
+	<!--  <bean id="afterMalaOnda" class="ar.edu.unq.aop.aspects.MalaOndaAfterAspect" />
+
+	<bean id="beforeMalaOnda" class="ar.edu.unq.aop.aspects.MalaOndaBeforeAspect" /> -->
 	
-	
-	<!-- <bean id="aroundBuenaOnda" class="ar.edu.unq.aop.aspects.BuenaOndaAdviceAspect"/> -->
+	 <bean id="aroundBuenaOnda" class="ar.edu.unq.aop.aspects.BuenaOndaAdviceAspect"/>
 
 </beans>
