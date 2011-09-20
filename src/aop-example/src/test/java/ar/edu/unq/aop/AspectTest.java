@@ -2,8 +2,6 @@ package ar.edu.unq.aop;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
-import ar.edu.unq.aop.Persona;
-
 public class AspectTest extends AbstractDependencyInjectionSpringContextTests {
 
     private Persona persona;

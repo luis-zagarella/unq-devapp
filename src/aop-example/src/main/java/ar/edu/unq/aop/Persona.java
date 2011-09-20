@@ -4,6 +4,10 @@ public class Persona {
 
     private String dialogo = "Necesitaría un desodorante";
 
+    public Persona() {
+        System.out.println("constructor");
+    }
+
     public void setDialogo(final String dialogo) {
         this.dialogo = dialogo;
     }

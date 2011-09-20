@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 public class BuenaOndaAdviceAspect {
 
     @Around("execution(* comprar(..))")
-    public Object aroundSaludar(final ProceedingJoinPoint pjp) throws Throwable {
+    public Object aroundGreeting(final ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("Buenas tardes, encantado de concerlo ... ");
         try {
             return pjp.proceed();
