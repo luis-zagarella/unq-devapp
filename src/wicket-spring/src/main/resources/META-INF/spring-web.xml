@@ -21,15 +21,14 @@
 		<property name="forceEagerSessionCreation" value="true" />
 	</bean>
 
-	<bean id="wicketApplication" class="ar.edu.unq.TestApplication">
+
+
+
+	<bean id="wicketApplication" class="ar.edu.unq.view.MyApplication">
 		<property name="generalService" ref="service.general" />
 	</bean>
 
-	<!-- beans de spring  -->
-	<bean id="service.general" class="ar.edu.unq.GeneralService" />
 
-	<bean id="unBean" class="ar.edu.unq.BeanEjemplo">
-			<property name="show" value="Ejemplo de wicket-spring" /> 
-	</bean>
+
 
 </beans>
