@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ar.unq</groupId>
-	<artifactId>wicket-spring</artifactId>
+	<artifactId>wicket-spring-hib</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>wicket-spring Maven Webapp</name>
+	<name>wicket-spring-Hibernate Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	
 	

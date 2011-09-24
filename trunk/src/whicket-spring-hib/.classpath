@@ -64,7 +64,7 @@
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-jdbc/2.5.6/spring-jdbc-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-jdbc/2.5.6/spring-jdbc-2.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-orm/2.5.6/spring-orm-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-orm/2.5.6/spring-orm-2.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/security/spring-security-core/2.0.4/spring-security-core-2.0.4.jar" sourcepath="M2_REPO/org/springframework/security/spring-security-core/2.0.4/spring-security-core-2.0.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-test/2.5.6/spring-test-2.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-tx/2.5.6/spring-tx-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-tx/2.5.6/spring-tx-2.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket/1.4.9/wicket-1.4.9.jar" sourcepath="M2_REPO/org/apache/wicket/wicket/1.4.9/wicket-1.4.9-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-auth-roles/1.4.9/wicket-auth-roles-1.4.9.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-auth-roles/1.4.9/wicket-auth-roles-1.4.9-sources.jar"/>
