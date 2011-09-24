@@ -1,4 +1,4 @@
-package ar.edu.unq;
+package ar.edu.unq.view;
 
 import org.apache.wicket.Request;
 import org.apache.wicket.authentication.AuthenticatedWebSession;

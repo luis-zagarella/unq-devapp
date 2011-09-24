@@ -1,4 +1,4 @@
-package ar.edu.unq;
+package ar.edu.unq.view;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
