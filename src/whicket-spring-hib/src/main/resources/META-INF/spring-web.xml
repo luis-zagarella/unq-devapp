@@ -20,15 +20,9 @@
 		class="org.springframework.security.context.HttpSessionContextIntegrationFilter">
 		<property name="forceEagerSessionCreation" value="true" />
 	</bean>
-
-
-
-
+	
 	<bean id="wicketApplication" class="ar.edu.unq.view.MyApplication">
 		<property name="generalService" ref="service.general" />
 	</bean>
-
-
-
 
 </beans>
