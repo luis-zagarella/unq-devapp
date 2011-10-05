@@ -11,6 +11,8 @@ import ar.edu.unq.services.PersonService;
 
 public class Home extends WebPage {
 
+    private static final long serialVersionUID = 1L;
+
     @SpringBean(name = "service.person")
     PersonService personService;
 
