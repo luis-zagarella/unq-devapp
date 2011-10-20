@@ -1,4 +1,4 @@
-package ar.edu.unq.aop;
+package example.aop;
 
 public class Persona {
 

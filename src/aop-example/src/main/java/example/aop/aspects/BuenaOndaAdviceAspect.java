@@ -1,4 +1,4 @@
-package ar.edu.unq.aop.aspects;
+package example.aop.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
