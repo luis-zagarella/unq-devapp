@@ -1,4 +1,4 @@
-package ar.edu.unq.aop.aspects;
+package example.aop.aspects;
 
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

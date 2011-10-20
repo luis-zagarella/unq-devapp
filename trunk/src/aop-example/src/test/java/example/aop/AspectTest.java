@@ -1,6 +1,8 @@
-package ar.edu.unq.aop;
+package example.aop;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+
+import example.aop.Persona;
 
 public class AspectTest extends AbstractDependencyInjectionSpringContextTests {
 
