@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="blog" />
+<meta name="description" content="Blog Website" />
+
+<title>Nornas - $messages.titlePage </title>
+
+<link href="../csss/style.css" rel="stylesheet" type="text/css" />
+
+<!-- Jquery -->
+
+<link href="../csss/jquery-ui-1.8.4.custom.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../javascripts/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="../javascripts/jquery-ui-1.8.4.custom.min.js" ></script>
+
+<!-- /Jquery -->
+
+<script type="text/javascript" src="../javascripts/utils.js" ></script>
+
+$headElements 
+$jsElements
+
+
+</head>
+
+<body>
+
+<div id="templatemo_container">
+
+  <div id="templatemo_header">
+  
+    <div class="templatemo_menu">
+      <ul>
+        <li><a href="../home/home.htm">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICES</a></li>
+        <li><a href="#">GALLERY</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </div>
+    
+    <div id="templatemo_site_title"><img src="../csss/images/Logo.png" width="324px" height="60px" ></img></div>
+    <div id="templatemo_slogan"> free blog </div>
+    
+  </div>
+  
+  <div id="templatemo_content">
+    	<h1> $messages.title </h1>
+        #parse($path)
+  </div>
+
+  <div id="templatemo_footer">
+           Copyright ©  Assembly.org 
+  </div>
+  
+</div>	
+<div class="hidden">
+	<div id="oneValidatorError"> $messages.oneValidatorError </div>
+	<div id="validatorErrors"> $messages.validatorErrors </div>
+	<div id="validatorFormatDate"> $messages.validatorFormatDate </div>
+	<div id="validatorFormatEmail"> $messages.validatorFormatEmail </div>
+	<div id="dateFromat">$messages.dateFromat</div>
+</div>
+</body>
+</html>
