@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<click-app charset="UTF-8" locale="en"> 
+
+  <pages package="org.assembly.nornas.web" automapping="true" autobinding="annotation"/>
+  
+  <page-interceptor classname="org.apache.click.doubleclick.inject.DependencyInjectorPageInterceptor"
+                    scope="application"/>
+                      
+  <controls>
+      <control classname="org.apache.click.doubleclick.injectspring.SpringControl"/>
+  </controls>
+  
+  <headers>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Cache-Control" value="no-store, no-cache, must-revalidate, post-check=0, pre-check=0"/>
+    <header name="Expires" value="1" type="Date"/>
+  </headers>
+
+  <mode value="debug"/>
+
+</click-app>  

@@ -1,0 +1,257 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ejemplos</groupId>
+
+  <artifactId>cxf</artifactId>
+
+  <packaging>war</packaging>
+
+  <version>1.0-SNAPSHOT</version>
+
+  <name>cxf Maven Webapp</name>
+
+  <url>http://maven.apache.org</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.7</version> 				
+				<configuration>
+					<wtpversion>2.0</wtpversion>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>		
+		   		<artifactId>maven-javadoc-plugin</artifactId> 		
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>		
+		    		<artifactId>maven-project-info-reports-plugin</artifactId> 		
+			</plugin>
+		</plugins>
+	</build>
+
+
+  <dependencies>
+
+
+     <!-- commons -->
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+	<!-- /Spring -->
+
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+
+
+        <!-- Test -->
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.6</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
+        </dependency>
+	
+       <!--
+	    Support for testing Spring applications with tools such as JUnit and TestNG
+	    This artifact is generally always defined with a 'test' scope for the integration testing framework and unit testing stubs
+	-->
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-test</artifactId>
+	  <version>${org.springframework.version}</version>
+	  <scope>test</scope>
+	</dependency>
+        
+        <!-- /Test -->
+
+	<!-- CXF -->
+
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		<version>${cxf.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-rt-transports-http</artifactId>
+		<version>${cxf.version}</version>
+	</dependency>
+
+	<!-- Jetty is needed if you're are not using the CXFServlet -->
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-rt-transports-http-jetty</artifactId>
+		<version>${cxf.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-bundle-jaxrs</artifactId>
+		<!-- 2.3.5 or 2.4.1 -->
+		<version>${cxf.version}</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-server</artifactId>
+			</exclusion>
+		</exclusions>
+
+	</dependency>
+
+	<!-- /CXF -->
+
+	<!-- Jackson -->
+	
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-jaxrs</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-xc</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+
+	<!-- /Jackson -->
+
+	<!-- Apache Click -->
+
+	<dependency>
+		<groupId>org.apache.click</groupId>
+		<artifactId>click</artifactId>
+		<version>2.2.0</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.click</groupId>
+		<artifactId>click-extras</artifactId>
+		<version>2.2.0</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.click.doubleclick</groupId>
+		<artifactId>inject</artifactId>
+		<version>1.0</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.apache.click</groupId>
+				<artifactId>click</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.click.doubleclick</groupId>
+		<artifactId>injectspring</artifactId>
+		<version>1.0</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.apache.click</groupId>
+				<artifactId>click</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+
+	<!-- /Apache Click -->
+
+	<!-- urlrewritefilter para url restful -->
+
+	<dependency>
+		<groupId>org.tuckey</groupId>
+		<artifactId>urlrewritefilter</artifactId>
+		<version>3.1.0</version>
+	</dependency>
+
+	<!-- /urlrewritefilter -->
+  </dependencies>
+
+ <properties>
+	<org.springframework.version>2.5.6.SEC02</org.springframework.version>
+	<cxf.version>2.3.5</cxf.version>
+	<jackson.version>1.8.2</jackson.version>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+
+    <repositories>
+        <repository>
+            <id>doubleclick-repo</id>
+            <url>https://doubleclick.googlecode.com/svn/repo/</url>
+        </repository>
+    </repositories>
+</project>
