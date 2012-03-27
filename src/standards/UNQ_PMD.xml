@@ -9,7 +9,6 @@
    <rule ref="rulesets/braces.xml/WhileLoopsMustUseBraces"/>
    <rule ref="rulesets/braces.xml/IfElseStmtsMustUseBraces"/>
    <rule ref="rulesets/braces.xml/ForLoopsMustUseBraces"/>
-   <rule ref="rulesets/design.xml/UseSingleton"/>
    <rule ref="rulesets/design.xml/SimplifyBooleanReturns"/>
    <rule ref="rulesets/design.xml/SimplifyBooleanExpressions"/>
    <rule ref="rulesets/design.xml/SwitchStmtsShouldHaveDefault"/>
@@ -69,17 +68,13 @@
    <rule ref="rulesets/logging-java.xml/LoggerIsNotStaticFinal"/>
    <rule ref="rulesets/logging-java.xml/SystemPrintln"/>
    <rule ref="rulesets/logging-java.xml/AvoidPrintStackTrace"/>
-   <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals"/>
    <rule ref="rulesets/strings.xml/StringInstantiation"/>
    <rule ref="rulesets/strings.xml/StringToString"/>
-   <rule ref="rulesets/strings.xml/InefficientStringBuffering"/>
    <rule ref="rulesets/strings.xml/UnnecessaryCaseChange"/>
    <rule ref="rulesets/strings.xml/UseStringBufferLength"/>
-   <rule ref="rulesets/strings.xml/AppendCharacterWithChar"/>
    <rule ref="rulesets/strings.xml/ConsecutiveLiteralAppends"/>
    <rule ref="rulesets/strings.xml/UseIndexOfChar"/>
    <rule ref="rulesets/strings.xml/InefficientEmptyStringCheck"/>
-   <rule ref="rulesets/strings.xml/InsufficientStringBufferDeclaration"/>
    <rule ref="rulesets/strings.xml/UselessStringValueOf"/>
    <rule ref="rulesets/strings.xml/StringBufferInstantiationWithChar"/>
    <rule ref="rulesets/strings.xml/UseEqualsToCompareStrings"/>
@@ -236,7 +231,11 @@
       </properties>
    </rule>
 
-   <rule ref="rulesets/codesize.xml/ExcessiveMethodLength"/>
+   <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
+	<properties>
+		<property name="minimum" value="100"/>
+	</properties>
+   </rule>
    <rule ref="rulesets/codesize.xml/ExcessiveParameterList"/>
    <rule ref="rulesets/codesize.xml/ExcessiveClassLength"/>
    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
