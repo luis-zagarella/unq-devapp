@@ -7,8 +7,8 @@ import org.aspectj.lang.annotation.Before;
 public class MalaOndaBeforeAspect {
 
     @Before("execution(* comprar(..))")
-    public void beforeGreeting() {
-        System.out.println("Este local de porquería .. ");
+    public void saludo() {
+        System.out.println("Este local de porqueria .. ");
     }
 
 }

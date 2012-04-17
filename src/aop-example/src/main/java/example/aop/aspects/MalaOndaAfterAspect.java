@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 public class MalaOndaAfterAspect {
 
     @AfterReturning("execution(* comprar(..))")
-    public void afterGreeting() {
+    public void despues() {
         System.out.println("Maldito ..");
     }
 }

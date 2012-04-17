@@ -13,7 +13,7 @@ public class BuenaOndaAdviceAspect {
         try {
             return pjp.proceed();
         } finally {
-            System.out.println("Gracias, que tenga un buen día .. hasta luego ");
+            System.out.println("Gracias, que tenga un buen dia .. hasta luego ");
         }
 
     }
