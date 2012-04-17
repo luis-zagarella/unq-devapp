@@ -7,14 +7,25 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 import ar.edu.unq.services.GeneralService;
+import ar.edu.unq.services.PersonService;
 
 public class MyApplication extends AuthenticatedWebApplication {
 
     private ar.edu.unq.view.MounterURL aMounterURL;
 
     private GeneralService generalService;
+    
+    private PersonService personService;
 
-    public GeneralService getGeneralService() {
+    public PersonService getPersonService() {
+		return personService;
+	}
+
+	public void setPersonService(PersonService personService) {
+		this.personService = personService;
+	}
+
+	public GeneralService getGeneralService() {
         return generalService;
     }
 

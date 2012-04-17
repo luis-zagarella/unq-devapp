@@ -1,6 +1,7 @@
 package ar.edu.unq.services;
 
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 public class GeneralService {
 
@@ -10,6 +11,7 @@ public class GeneralService {
         LOG.info("se crea");
     }
 
+    @Transactional
     public void test() {
         LOG.info("test");
     }

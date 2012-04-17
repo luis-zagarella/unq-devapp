@@ -2,6 +2,7 @@ package ar.edu.unq.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.Person;
@@ -12,6 +13,8 @@ import ar.edu.unq.repositories.PersonRepository;
  */
 public class PersonService {
 
+	static Logger logger = Logger.getLogger(PersonService.class);
+	
     private PersonRepository personRepository;
 
     public PersonRepository getPersonRepository() {
@@ -30,6 +33,7 @@ public class PersonService {
     @Transactional
     public void addPerson(final Person person) {
         personRepository.save(person);
+        logger.warn("Log del person service");
     }
 
     @Transactional(readOnly = true)
