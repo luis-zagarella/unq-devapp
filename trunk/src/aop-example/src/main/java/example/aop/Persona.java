@@ -2,10 +2,9 @@ package example.aop;
 
 public class Persona {
 
-    private String dialogo = "Necesitaría un desodorante";
+    private String dialogo = "Necesitaria un desodorante";
 
     public Persona() {
-        System.out.println("constructor");
     }
 
     public void setDialogo(final String dialogo) {
