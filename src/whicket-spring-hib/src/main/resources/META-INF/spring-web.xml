@@ -29,11 +29,10 @@
 	<security:global-method-security
 		secured-annotations="enabled" />
 		
-		
-
 
 	<bean id="wicketApplication" class="ar.edu.unq.view.MyApplication">
 		<property name="generalService" ref="service.general" />
+		<property name="personService" ref="service.person" />
 	</bean>
 
 </beans>
