@@ -1,0 +1,16 @@
+<!DOCTYPE html >
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+</head>
+<body>
+	<wicket:panel>
+		<form wicket:id="crudForm">
+			<p><wicket:message key="crud.labels.choice"/><select wicket:id="choice"></select></p>
+			<wicket:child />
+			<input type="button" wicket:id="deleteButton"
+				wicket:message="value:crud.labels.delete"> <input
+				type="button" wicket:id="cancelButton" wicket:message="value:crud.labels.cancel">
+		</form>
+	</wicket:panel>
+</body>
+</html>

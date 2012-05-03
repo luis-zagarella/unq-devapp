@@ -31,8 +31,7 @@
 		
 
 	<bean id="wicketApplication" class="ar.edu.unq.view.MyApplication">
-		<property name="generalService" ref="service.general" />
-		<property name="personService" ref="service.person" />
+	<property name="generalService" ref="services.general"></property>
 	</bean>
 
 </beans>

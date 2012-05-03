@@ -9,31 +9,31 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
-import ar.edu.unq.Person;
+import ar.edu.unq.model.Person;
 
-/**
- * TODO: description
- */
-public class PersonRepository extends HibernateGenericDAO<Person> implements GenericRepository<Person> {
+public class PersonRepository extends HibernateGenericDAO<Person> implements
+		GenericRepository<Person> {
 
-    public PersonRepository() {
-        System.out.println("Constructor de Person");
-    }
+	private static final long serialVersionUID = -4036535812105672110L;
 
-    @Override
-    protected Class<Person> getDomainClass() {
-        return Person.class;
-    }
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<Person> filterPeople(final String pattern) {
+		return (List<Person>) this.getHibernateTemplate().execute(
+				new HibernateCallback() {
+					@Override
+					public List<Person> doInHibernate(final Session session)
+							throws HibernateException, SQLException {
+						Criteria criteria = session
+								.createCriteria(Person.class);
+						criteria.add(Restrictions.like("name", "%" + pattern
+								+ "%"));
+						return criteria.list();
+					}
+				});
+	}
 
-    @SuppressWarnings("unchecked")
-    public List<Person> filterPeople(final String pattern) {
-        return (List<Person>) this.getHibernateTemplate().execute(new HibernateCallback() {
-            @Override
-            public List<Person> doInHibernate(final Session session) throws HibernateException, SQLException {
-                Criteria criteria = session.createCriteria(Person.class);
-                criteria.add(Restrictions.like("name", "%" + pattern + "%"));
-                return criteria.list();
-            }
-        });
-    }
+	@Override
+	protected Class<Person> getDomainClass() {
+		return Person.class;
+	}
 }

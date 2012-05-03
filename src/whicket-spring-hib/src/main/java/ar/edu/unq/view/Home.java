@@ -1,53 +1,160 @@
 package ar.edu.unq.view;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.Person;
+import ar.edu.unq.model.Car;
+import ar.edu.unq.model.Person;
+import ar.edu.unq.services.CarService;
+import ar.edu.unq.services.GeneralService;
 import ar.edu.unq.services.PersonService;
+import ar.edu.unq.view.components.BodyPanel;
+import ar.edu.unq.view.components.MenuButton;
+import ar.edu.unq.view.components.ajaxLoadingButton.LoadingPanel;
+import ar.edu.unq.view.components.crud.create.CRUDCreateCarBodyPage;
+import ar.edu.unq.view.components.crud.create.CRUDCreatePersonBodyPage;
+import ar.edu.unq.view.components.crud.delete.CRUDDeleteBodyPage;
+import ar.edu.unq.view.components.crud.update.CRUDUpdateCarBodyPage;
+import ar.edu.unq.view.components.crud.update.CRUDUpdatePersonBodyPage;
+import ar.edu.unq.view.model.MenuButtonModel;
 
 public class Home extends WebPage {
+	private static final long serialVersionUID = 6007296848816900008L;
+	private BodyPanel bodyPage;
+	@SpringBean(name = "services.general")
+	private GeneralService generalService;
+	private LoadingPanel loadingPanel;
+	private Label message;
 
-    private static final long serialVersionUID = 1L;
+	private void addBodyPage() {
+		BodyPanel aBodyPage = new BodyPanel(this);
+		this.configuredBodyPage(aBodyPage);
+		this.add(aBodyPage);
+	}
 
-    @SpringBean(name = "service.person")
-    PersonService personService;
+	private void addMenu() {
+		this.add(new ListView<MenuButtonModel>("menuButton", this.getMenues()) {
 
-    public Home() {
-        this.initialize();
-    }
+			private static final long serialVersionUID = -6536873757791884900L;
 
-    public final void initialize() {
-        Label markupLabel = new Label("labelExample", String.valueOf(personService.getAllPerson().size()));
-        markupLabel.setEscapeModelStrings(false);
-        this.add(markupLabel);
+			@Override
+			protected void populateItem(final ListItem<MenuButtonModel> item) {
+				item.setRenderBodyOnly(true);
+				item.add(new MenuButton("menuButtonComponent", item.getModel(),
+						Home.this));
+			}
+		});
+	}
 
-        Button addPersonButton = new Button("addObjectButton") {
-            private static final long serialVersionUID = 1L;
+	public void changeBodyPage(final BodyPanel aBodyPage,
+			final AjaxRequestTarget target) {
+		this.getBodyPage().replaceWith(aBodyPage);
+		this.configuredBodyPage(aBodyPage);
+		this.setBodyPage(aBodyPage);
+		target.add(aBodyPage);
+	}
 
-            @Override
-            public void onSubmit() {
-                this.info("addPersonButton.onSubmit executed");
-            }
-        };
+	public void changeBodyPageWithMessage(final BodyPanel aBodyPage,
+			final String message, final AjaxRequestTarget target) {
 
-        Form form = new Form("form") {
-            private static final long serialVersionUID = 1L;
+		this.changeBodyPage(aBodyPage, target);
+		target.appendJavaScript("$(function() {"
+				+ "				$('#dialog').dialog('open');"//
+				+ "				 return false;"//
+				+ "				 });");
+		this.replaceMessage(message);
+		target.add(this.getMessage());
+	}
 
-            @Override
-            protected void onSubmit() {
-                this.info("Form.onSubmit pre-executed");
-                personService.addPerson(new Person());
-                this.info("Form.onSubmit post-executed");
-                this.setResponsePage(Home.class);
-            }
-        };
+	private void configuredBodyPage(final BodyPanel aBodyPage) {
+		aBodyPage.setOutputMarkupId(true);
+		aBodyPage.setOutputMarkupPlaceholderTag(true);
+		this.setBodyPage(aBodyPage);
+	}
 
-        form.add(addPersonButton);
-        this.add(form);
+	private void createEmptyMessage() {
+		this.message = new Label("messageDialog");
+		this.add(this.message);
+	}
 
-    }
+	public BodyPanel getBodyPage() {
+		return this.bodyPage;
+	}
+
+	public GeneralService getGeneralService() {
+		return this.generalService;
+	}
+
+	public LoadingPanel getLoadingPanel() {
+		return this.loadingPanel;
+	}
+
+	private List<? extends MenuButtonModel> getMenues() {
+		CarService carService = this.getGeneralService().getCarService();
+		PersonService personService = this.getGeneralService()
+				.getPersonService();
+		return Arrays
+				.asList(new MenuButtonModel[] {
+						new MenuButtonModel("home.menu.crud.car.create",
+								new CRUDCreateCarBodyPage(carService, this)),
+						new MenuButtonModel("home.menu.crud.car.update",
+								new CRUDUpdateCarBodyPage(this, carService,
+										"brand")),
+						new MenuButtonModel("home.menu.crud.car.delete",
+								new CRUDDeleteBodyPage<Car>(carService,
+										"brand", this)),
+						new MenuButtonModel("home.menu.crud.person.create",
+								new CRUDCreatePersonBodyPage(personService,
+										this)),
+						new MenuButtonModel("home.menu.crud.person.update",
+								new CRUDUpdatePersonBodyPage(this,
+										personService, "name")),
+						new MenuButtonModel("home.menu.crud.person.delete",
+								new CRUDDeleteBodyPage<Person>(personService,
+										"name", this)) });
+	}
+
+	public Label getMessage() {
+		return this.message;
+	}
+
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		this.loadingPanel = new LoadingPanel("loadingPanel");
+		this.add(this.loadingPanel);
+		this.createEmptyMessage();
+		this.replaceMessage("home.dialog.emptyMessage");
+		this.addBodyPage();
+		this.addMenu();
+	}
+
+	private void replaceMessage(final String message) {
+		Label replacement = new Label("messageDialog", new ResourceModel(
+				message));
+		replacement.setOutputMarkupId(true);
+		this.setOutputMarkupPlaceholderTag(true);
+		this.getMessage().replaceWith(replacement);
+		this.setMessage(replacement);
+	}
+
+	public void setBodyPage(final BodyPanel bodyPage) {
+		this.bodyPage = bodyPage;
+	}
+
+	public void setGeneralService(final GeneralService generalService) {
+		this.generalService = generalService;
+	}
+
+	public void setMessage(final Label message) {
+		this.message = message;
+	}
 }
