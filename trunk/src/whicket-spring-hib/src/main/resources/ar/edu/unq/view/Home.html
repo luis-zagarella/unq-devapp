@@ -1,30 +1,73 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC>
 <html xmlns:wicket="http://wicket.apache.org/">
 
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="styles/style.css" />
- 	<title>DesApp</title>
-  </head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="style/smoothness/jquery-ui-1.8.19.custom.css" />
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/ui/jquery.ui.core.js"></script>
+<script src="scripts/ui/jquery.ui.widget.js"></script>
+<script src="scripts/ui/jquery.effects.core.js"></script>
+<script src="scripts/ui/jquery.ui.mouse.js"></script>
+<script src="scripts/ui/jquery.ui.draggable.js"></script>
+<script src="scripts/ui/jquery.ui.position.js"></script>
+<script src="scripts/ui/jquery.ui.resizable.js"></script>
+<script src="scripts/ui/jquery.ui.dialog.js"></script>
+<script src="scripts/ui/jquery.effects.core.js"></script>
+<script src="scripts/ui/jquery.effects.blind.js"></script>
+<script src="scripts/ui/jquery.effects.explode.js"></script>
+<title>DesApp</title>
 
-  <body>
-	<br/>
-	
-	
-	<div class="title">
-			<wicket:message key="home.tittle"> Default message</wicket:message>
-	</div>
-	
-	<div>
-		<wicket:message key="home.objectsCount"> Default message</wicket:message>
-		<span wicket:id="labelExample"> Texto a reemplazar </span>
-	</div>
-	
-	<form wicket:id="form">
-		<input wicket:id="addObjectButton" type="submit"  value="Default text" wicket:message="value:home.addObjectButton.value" />
-	</form>
+</head>
 
+<body>
+	<div id="dialog" wicket:message="title:home.dialog.title">
+		<p wicket:id="messageDialog">This is an animated dialog which is
+			useful for displaying information. The dialog window can be moved,
+			resized and closed with the 'x' icon.</p>
+	</div>
+	<script type="text/javascript">
+		$.fx.speeds._default = 450;
+		$(function() {
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : "blind",
+				hide : "explode",
+				modal : true,
+				draggable : false
+			});
+		});
+	</script>
+	<div wicket:id="loadingPanel"></div>
+	<header>
+		<h1>
+			<wicket:message key="home.title" />
+		</h1>
+	</header>
+<!-- 	<aside> -->
 	
-  </body>
+<!-- 	</aside> -->
+	<nav>
+		<h1>
+			<wicket:message key="home.menu.crud.title" />
+		</h1>
+		<span wicket:id="menuButton"><span
+			wicket:id="menuButtonComponent"></span> </span>
+	</nav>
+	<article>
+		<header>
+			<h1 ><wicket:message key="home.body.title" /></h1>
+		</header>
+		<p>
+		<div wicket:id="body"></div>
+		</p>
+		<footer>
+		</footer>
+	</article>
+	<footer>
+		<p>Powered by <img src="images/wicket.png" style="width:90px;height:90px;"/> </p>
+	</footer>
+</body>
 </html>

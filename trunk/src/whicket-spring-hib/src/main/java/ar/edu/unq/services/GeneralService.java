@@ -1,19 +1,24 @@
 package ar.edu.unq.services;
 
-import org.apache.log4j.Logger;
-import org.springframework.transaction.annotation.Transactional;
-
 public class GeneralService {
 
-    protected static final Logger LOG = Logger.getLogger(GeneralService.class);
+	private CarService carService;
+	private PersonService personService;
 
-    public GeneralService() {
-        LOG.info("se crea");
-    }
+	public CarService getCarService() {
+		return this.carService;
+	}
 
-    @Transactional
-    public void test() {
-        LOG.info("test");
-    }
+	public PersonService getPersonService() {
+		return this.personService;
+	}
+
+	public void setCarService(final CarService carService) {
+		this.carService = carService;
+	}
+
+	public void setPersonService(final PersonService personService) {
+		this.personService = personService;
+	}
 
 }

@@ -6,66 +6,77 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
+import ar.edu.unq.model.Car;
+import ar.edu.unq.model.Person;
+import ar.edu.unq.services.CarService;
 import ar.edu.unq.services.GeneralService;
 import ar.edu.unq.services.PersonService;
+import ar.edu.unq.utils.DateUtils;
 
 public class MyApplication extends AuthenticatedWebApplication {
 
-    private ar.edu.unq.view.MounterURL aMounterURL;
+	private MounterURL aMounterURL;
+	private GeneralService generalService;
 
-    private GeneralService generalService;
-    
-    private PersonService personService;
-
-    public PersonService getPersonService() {
-		return personService;
+	public MyApplication() {
+		super();
 	}
 
-	public void setPersonService(PersonService personService) {
-		this.personService = personService;
+	public String getContextPath() {
+		return this.getServletContext().getContextPath();
 	}
 
 	public GeneralService getGeneralService() {
-        return generalService;
-    }
+		return this.generalService;
+	}
 
-    public void setGeneralService(final GeneralService generalService) {
-        this.generalService = generalService;
-    }
+	@Override
+	public Class<? extends Page> getHomePage() {
+		return Home.class;
+	}
 
-    public MyApplication() {
-        System.out.println(" Constructor de MyApplication  ");
+	@Override
+	protected Class<? extends WebPage> getSignInPageClass() {
+		return Home.class;
+	}
 
-    }
+	@Override
+	protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
+		return WebSession.class;
+	}
 
-    @Override
-    public void init() {
-        aMounterURL = new MounterURL(this);
-        this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
-        this.mountUrl("home", Home.class, "");
-    }
+	@Override
+	public void init() {
+		this.aMounterURL = new MounterURL(this);
+		this.getComponentInstantiationListeners().add(
+				new SpringComponentInjector(this));
+		this.mountUrl("home", Home.class, "");
+		this.initializeModel();
+	}
 
-    private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
-        aMounterURL.mount(mountPath, pageClass, parameters);
-    }
+	private void initializeModel() {
+		CarService carService = this.getGeneralService().getCarService();
+		Car fiatPunto = new Car("Fiat Punto", 4,
+				DateUtils.getDate("10/11/2012"));
+		carService.save(fiatPunto);
+		carService.save(new Car("Peugeot 206", 4, DateUtils
+				.getDate("01/12/2000")));
+		PersonService personService = this.getGeneralService()
+				.getPersonService();
+		Person leandro = new Person("Leandro", 26);
+		personService.save(leandro);
+		personService.save(new Person("Jesica", 25));
+		fiatPunto.setOwner(leandro);
+	}
 
-    @Override
-    protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
-        return WebSession.class;
-    }
+	private void mountUrl(final String mountPath,
+			final Class<? extends WebPage> pageClass,
+			final String... parameters) {
+		this.aMounterURL.mount(mountPath, pageClass, parameters);
+	}
 
-    @Override
-    protected Class<? extends WebPage> getSignInPageClass() {
-        return Home.class;
-    }
-
-    @Override
-    public Class<? extends Page> getHomePage() {
-        return Home.class;
-    }
-
-    public String getContextPath() {
-        return this.getServletContext().getContextPath();
-    }
+	public void setGeneralService(final GeneralService generalService) {
+		this.generalService = generalService;
+	}
 
 }

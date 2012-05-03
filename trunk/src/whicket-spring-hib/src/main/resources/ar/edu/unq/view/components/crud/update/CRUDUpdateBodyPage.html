@@ -1,0 +1,24 @@
+<!DOCTYPE html >
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+</head>
+<body>
+	<wicket:panel>
+		<form wicket:id="selector">
+			<p>
+				<wicket:message key="crud.labels.select"></wicket:message>
+				<select wicket:id="choices"></select>
+				<input type="button" wicket:id="select" wicket:message="value:crud.labels.select.button"/>
+				<input type="button" wicket:id="cancelButton" wicket:message="value:crud.labels.cancel">
+			</p>
+		</form>
+		<form wicket:id="crudForm">
+			<wicket:child />
+			<input type="button" wicket:id="updateButton"
+				wicket:message="value:crud.labels.update"> <input
+				type="button" wicket:id="cancelButton"
+				wicket:message="value:crud.labels.cancel">
+		</form>
+	</wicket:panel>
+</body>
+</html>
