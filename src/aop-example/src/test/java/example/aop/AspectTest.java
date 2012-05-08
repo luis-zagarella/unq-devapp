@@ -1,24 +1,28 @@
 package example.aop;
 
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import example.aop.Persona;
 
-public class AspectTest extends AbstractDependencyInjectionSpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"/aspects-context.xml"})
+public class AspectTest {
 
+	@Autowired
     private Persona persona;
 
     public void setPersona(final Persona unaPersona) {
         persona = unaPersona;
     }
 
+    @Test
     public void testAspects() {
         persona.comprar();
     }
 
-    @Override
-    protected String[] getConfigLocations() {
-        return new String[] { "aspects-context.xml" };
-    }
+    
 
 }
