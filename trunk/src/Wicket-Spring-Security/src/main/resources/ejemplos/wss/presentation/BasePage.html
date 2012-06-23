@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>:: Ejemplo Spring Security/Wicket ::</title>
+<link href="css/site.css"
+	rel="stylesheet" type="text/css" />
+<link href="js/style.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="css/datatables/demo_page.css" rel="stylesheet" type="text/css" />
+<link href="css/datatables/demo_table.css" rel="stylesheet" type="text/css" />
+<link href="css/datatables/demo_table_jui.css" rel="stylesheet" type="text/css" />
+<link type="text/css"
+	href="css/datatables/jquery.dataTables.css"
+	rel="stylesheet" />	
+
+<link type="text/css"
+	href="css/jquery-ui.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="css/ui-lightness/jquery-ui-1.8.16.custom.css"
+	rel="stylesheet" />
+
+<script type="text/javascript"
+	src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript"
+	src="js/jquery-ui-1.8.16.custom.min.js"></script>	
+<script type="text/javascript"
+	src="js/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="js/datatables/jquery.dataTables.extended.js"></script>	
+
+<script type="text/javascript">
+	
+	function onDataTableActionRequest(e) {
+		var actionDescriptor = $(e).attr("name");
+		var dataTableContainerId = actionDescriptor.split(',')[0] + "Panel";
+		$("#" + dataTableContainerId + " input[name='dt_actionDescriptor']")
+				.val(actionDescriptor);
+		$("#" + dataTableContainerId + " input[name='dt_submitActionButton']")
+				.click();
+		return false;
+	}
+
+	$(function() {
+		$("#accordion").accordion({
+			header : "h3"
+		});
+
+		$('#tabs').tabs();
+
+		$('#dialog_link, ul#icons li').hover(function() {
+			$(this).addClass('ui-state-hover');
+		}, function() {
+			$(this).removeClass('ui-state-hover');
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div class="ContenedorPrincipal">
+		<!-- Navigation bar -->
+		<div class="ContenedorNav">
+			<ul>
+				<li class="menu"><span><a id="linkToHomePage"
+						wicket:id="linkToHomePage">Home</a></span></li>
+			</ul>
+			<ul>
+				<li class="menu"><span><a id="linkToContentAdmin"
+						wicket:id="linkToContentAdmin">Link de --ADMIN-- </a></span></li>
+			</ul>
+			
+				<ul>
+				<li class="menu"><span><a id="linkToContentUser"
+						wicket:id="linkToContentUser">Link de --USER--</a></span></li>
+			</ul>
+			<ul>
+				<li class="menu"><span><a href="j_spring_security_logout">Logout</a></span></li>
+			</ul>
+			
+		</div>
+
+		<!-- Content -->
+		<div class="ContenedorContent">
+			<wicket:child />
+		</div>
+
+		<!-- Footer -->
+		<div class="Clear"></div>
+		<div class="ContenedorFooter">Powered by XXX</div>
+	</div>
+</body>
+</html>
