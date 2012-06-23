@@ -66,10 +66,10 @@
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 
 				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
-				<!-- Propiedades para la configuración de la cache de segundo nivel -->
+				<!-- Propiedades para la configuración de la cache de segundo nivel
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_second_level_cache">false</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop> -->
 				<prop key="hibernate.connection.autocommit">false</prop>
 				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>
 			</props>
