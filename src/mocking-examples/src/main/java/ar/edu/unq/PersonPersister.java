@@ -4,7 +4,7 @@
 package ar.edu.unq;
 
 /**
- * @author diego
+ * @author Cristian
  * 
  */
 public interface PersonPersister {
