@@ -4,23 +4,20 @@
 package ar.edu.unq;
 
 // CHECKSTYLE:OFF
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Date;
-
-import ar.edu.unq.PersistenceException;
-import ar.edu.unq.Person;
-import ar.edu.unq.PersonPersister;
-import ar.edu.unq.PersonPersisterImpl;
-import ar.edu.unq.Repository;
-import ar.edu.unq.RepositoryException;
 
 import junit.framework.TestCase;
 
 /**
  * Prueba usando mockito.
  * 
- * @author diego
+ * @author Cristian
  * 
  */
 public class PersonPersisterUsingMockitoTest extends TestCase {
@@ -28,7 +25,7 @@ public class PersonPersisterUsingMockitoTest extends TestCase {
     public void testPersonPersister() throws Exception {
         Repository repositoryMock = mock(Repository.class);
 
-        Person aPerson = new Person("Diego", "Gomez", new Date());
+        Person aPerson = new Person("Cristian", "Gomez", new Date());
 
         PersonPersister persister = new PersonPersisterImpl(repositoryMock);
 
@@ -40,7 +37,7 @@ public class PersonPersisterUsingMockitoTest extends TestCase {
     public void testPersonPersisterFails() throws Exception {
         Repository repositoryMock = mock(Repository.class);
 
-        Person aPerson = new Person("Diego", "Gomez", new Date());
+        Person aPerson = new Person("Cristian", "Gomez", new Date());
 
         PersonPersister persister = new PersonPersisterImpl(repositoryMock);
 
@@ -57,11 +54,11 @@ public class PersonPersisterUsingMockitoTest extends TestCase {
     public void testPersonIsAStub() throws Exception {
         Person aPerson = mock(Person.class);
 
-        when(aPerson.getName()).thenReturn("diego");
+        when(aPerson.getName()).thenReturn("Cristian");
 
         when(aPerson.getBirthday()).thenThrow(new RuntimeException("Exploto"));
 
-        assertEquals("diego", aPerson.getName());
+        assertEquals("Cristian", aPerson.getName());
 
         try {
             aPerson.getBirthday();
@@ -74,11 +71,11 @@ public class PersonPersisterUsingMockitoTest extends TestCase {
     public void testLlamadasSucesivas() {
         Person aPerson = mock(Person.class);
 
-        when(aPerson.getName()).thenReturn("diego1", "diego2", "diego3");
+        when(aPerson.getName()).thenReturn("Cristian1", "Cristian2", "Cristian3");
 
-        assertEquals("diego1", aPerson.getName());
-        assertEquals("diego2", aPerson.getName());
-        assertEquals("diego3", aPerson.getName());
+        assertEquals("Cristian1", aPerson.getName());
+        assertEquals("Cristian2", aPerson.getName());
+        assertEquals("Cristian3", aPerson.getName());
     }
 
 }

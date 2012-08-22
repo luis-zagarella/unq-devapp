@@ -1,7 +1,7 @@
 package ar.edu.unq;
 
 /**
- * @author diego
+ * @author Cristian
  * 
  */
 public class RepositoryException extends Exception {
