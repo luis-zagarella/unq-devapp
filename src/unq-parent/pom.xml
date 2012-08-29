@@ -9,10 +9,8 @@
 	<packaging>pom</packaging>
 
 	<name>UNQ Maven POM</name>
-	
-	
 
-	<description>UNQ POM</description>
+	<description>UNQ Maven POM</description>
 
 	<properties>
 		<targetJdkVersion>1.6</targetJdkVersion>
