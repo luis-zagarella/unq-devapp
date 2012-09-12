@@ -340,6 +340,12 @@
 
 <profiles>
 	<profile>
+
+		<properties>
+			<deploy.hostname>localhost</deploy.hostname>
+			<deploy.port>8081</deploy.port>
+		</properties>
+
 		<id>deploy-test</id>
 		<build>
 			<plugins>
@@ -357,8 +363,8 @@
 						<configuration>
 							<type>runtime</type>
 							<properties>
-								<cargo.hostname>localhost</cargo.hostname>
-                                                                 <cargo.servlet.port>8080</cargo.servlet.port>
+								<cargo.hostname>${deploy.hostname}</cargo.hostname>
+                                                                 <cargo.servlet.port>${deploy.port}</cargo.servlet.port>
 								<cargo.remote.username>tomcat-deploy</cargo.remote.username>
 								<cargo.remote.password>tomcat-deploy</cargo.remote.password>
 							</properties>
@@ -369,7 +375,7 @@
 									<groupId>${groupId}</groupId>
 									<artifactId>${artifactId}</artifactId>
 									<type>war</type>
- 									<pingURL>http://localhost:8080/${artifactId}</pingURL>
+ 									<pingURL>http://${deploy.hostname}:${deploy.port}/${artifactId}</pingURL>
 								        <pingTimeout>20000</pingTimeout>
 									<properties>
 										<context>${artifactId}</context>
