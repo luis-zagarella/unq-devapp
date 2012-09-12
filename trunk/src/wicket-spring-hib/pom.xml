@@ -311,7 +311,7 @@
 	</dependencies>
 
 	<properties>
-		<jetty.version>6.1.16</jetty.version>
+		<jetty.version>6.1.24</jetty.version>
 		<wicket.version>1.5.0</wicket.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
 	</properties>
@@ -337,6 +337,99 @@
 			</resource>
 		</resources>
 	</build>
+
+<profiles>
+	<profile>
+		<id>deploy-test</id>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+		
+					<configuration>
+						<wait>true</wait>
+						<container>
+							<containerId>tomcat6x</containerId>
+							<type>remote</type>
+						</container>
+			
+						<configuration>
+							<type>runtime</type>
+							<properties>
+								<cargo.hostname>localhost</cargo.hostname>
+                                                                 <cargo.servlet.port>8080</cargo.servlet.port>
+								<cargo.remote.username>tomcat-deploy</cargo.remote.username>
+								<cargo.remote.password>tomcat-deploy</cargo.remote.password>
+							</properties>
+						</configuration>
+			
+							<deployables>
+								<deployable>
+									<groupId>${groupId}</groupId>
+									<artifactId>${artifactId}</artifactId>
+									<type>war</type>
+ 									<pingURL>http://localhost:8080/${artifactId}</pingURL>
+								        <pingTimeout>20000</pingTimeout>
+									<properties>
+										<context>${artifactId}</context>
+									</properties>
+								</deployable>
+							</deployables>
+
+						
+						<executions>
+							<execution>
+								<id>start-container</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>deployer-deploy</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-container</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>deployer-undeploy</goal>
+									
+								</goals>
+							</execution>
+							<execution>
+								<id>verify-deploy</id>
+								<phase>install</phase>
+								<goals>
+									<goal>deployer-deploy</goal>
+								</goals>
+							</execution> 
+							<execution>
+								<id>clean-undeploy</id>
+								<phase>pre-clean</phase>
+								<goals>
+									<goal>deployer-undeploy</goal>
+								</goals>
+							</execution> 
+						</executions>
+					</configuration>
+				</plugin>
+
+				<!--<plugin>
+				    <groupId>com.lazerycode.jmeter</groupId>
+				    <artifactId>jmeter-maven-plugin</artifactId>
+				    <version>1.4</version>
+				    <executions>
+					<execution>
+					    <id>jmeter-tests</id>
+					    <phase>verify</phase>
+					    <goals>
+						<goal>jmeter</goal>
+					    </goals>
+					</execution>
+				    </executions>
+				</plugin> -->
+			</plugins>
+		</build>
+	</profile>
+</profiles>
 
 
 </project>
