@@ -355,6 +355,8 @@
 			<properties>
 				<deploy.hostname>localhost</deploy.hostname>
 				<deploy.port>8081</deploy.port>
+				<deploy.artifactId>${artifactId}</deploy.artifactId>
+				<deploy.groupId>${groupId}</deploy.groupId>
 			</properties>
 
 			<id>deploy-test</id>
@@ -365,22 +367,31 @@
 						<artifactId>cargo-maven2-plugin</artifactId>
 
 						<configuration>
-
+							<wait>true</wait>
 							<container>
-								<containerId>jetty6x</containerId>
-								<type>embedded</type>
+								<containerId>tomcat6x</containerId>
+								<type>remote</type>
 							</container>
 
+							<configuration>
+								<type>runtime</type>
+								<properties>
+									<cargo.hostname>${deploy.hostname}</cargo.hostname>
+									<cargo.servlet.port>${deploy.port}</cargo.servlet.port>
+									<cargo.remote.username>tomcat-deploy</cargo.remote.username>
+									<cargo.remote.password>tomcat-deploy</cargo.remote.password>
+								</properties>
+							</configuration>
 
 							<deployables>
 								<deployable>
-									<groupId>${groupId}</groupId>
-									<artifactId>${artifactId}</artifactId>
+									<groupId>${deploy.groupId}</groupId>
+									<artifactId>${deploy.artifactId}</artifactId>
 									<type>war</type>
-									<pingURL>http://${deploy.hostname}:${deploy.port}/${artifactId}</pingURL>
+									<pingURL>http://${deploy.hostname}:${deploy.port}/${deploy.artifactId}</pingURL>
 									<pingTimeout>20000</pingTimeout>
 									<properties>
-										<context>${artifactId}</context>
+										<context>${deploy.artifactId}</context>
 									</properties>
 								</deployable>
 							</deployables>
@@ -391,14 +402,29 @@
 									<id>start-container</id>
 									<phase>pre-integration-test</phase>
 									<goals>
-										<goal>start</goal>
+										<goal>deployer-deploy</goal>
 									</goals>
 								</execution>
 								<execution>
 									<id>stop-container</id>
 									<phase>post-integration-test</phase>
 									<goals>
-										<goal>stop</goal>
+										<goal>deployer-undeploy</goal>
+
+									</goals>
+								</execution>
+								<execution>
+									<id>verify-deploy</id>
+									<phase>install</phase>
+									<goals>
+										<goal>deployer-deploy</goal>
+									</goals>
+								</execution>
+								<execution>
+									<id>clean-undeploy</id>
+									<phase>pre-clean</phase>
+									<goals>
+										<goal>deployer-undeploy</goal>
 									</goals>
 								</execution>
 							</executions>
