@@ -81,20 +81,20 @@ public class Home extends WebPage {
 	}
 
 	private void createEmptyMessage() {
-		this.message = new Label("messageDialog");
-		this.add(this.message);
+		message = new Label("messageDialog");
+		this.add(message);
 	}
 
 	public BodyPanel getBodyPage() {
-		return this.bodyPage;
+		return bodyPage;
 	}
 
 	public GeneralService getGeneralService() {
-		return this.generalService;
+		return generalService;
 	}
 
 	public LoadingPanel getLoadingPanel() {
-		return this.loadingPanel;
+		return loadingPanel;
 	}
 
 	private List<? extends MenuButtonModel> getMenues() {
@@ -123,14 +123,14 @@ public class Home extends WebPage {
 	}
 
 	public Label getMessage() {
-		return this.message;
+		return message;
 	}
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		this.loadingPanel = new LoadingPanel("loadingPanel");
-		this.add(this.loadingPanel);
+		loadingPanel = new LoadingPanel("loadingPanel");
+		this.add(loadingPanel);
 		this.createEmptyMessage();
 		this.replaceMessage("home.dialog.emptyMessage");
 		this.addBodyPage();

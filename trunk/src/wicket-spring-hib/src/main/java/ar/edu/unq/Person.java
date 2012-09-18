@@ -4,33 +4,33 @@ import org.apache.log4j.Logger;
 
 public class Person {
 
-    private static final Logger LOG = Logger.getLogger(Person.class);
+	private static final Logger LOG = Logger.getLogger(Person.class);
 
-    private String name;
+	private String name;
 
-    long id;
+	long id;
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(final String name) {
-        this.name = name;
-    }
+	public void setName(final String name) {
+		this.name = name;
+	}
 
-    /**
-     * Mugre para Hibernate
-     */
+	/**
+	 * Mugre para Hibernate
+	 */
 
-    public Person() {
+	public Person() {
 
-    }
+	}
 
-    public long getId() {
-        return id;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setId(final long id) {
-        this.id = id;
-    }
+	public void setId(final long id) {
+		this.id = id;
+	}
 }

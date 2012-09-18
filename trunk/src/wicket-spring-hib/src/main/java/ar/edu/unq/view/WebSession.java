@@ -6,22 +6,22 @@ import org.apache.wicket.request.Request;
 
 public class WebSession extends AuthenticatedWebSession {
 
-    public WebSession(final Request request) {
-        super(request);
-    }
+	public WebSession(final Request request) {
+		super(request);
+	}
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    public boolean authenticate(final String username, final String password) {
-        return true;
-    }
+	@Override
+	public boolean authenticate(final String username, final String password) {
+		return true;
+	}
 
-    @Override
-    public Roles getRoles() {
-        Roles roles = new Roles();
-        roles.add("ADMIN");
-        return roles;
-    }
+	@Override
+	public Roles getRoles() {
+		Roles roles = new Roles();
+		roles.add("ADMIN");
+		return roles;
+	}
 
 }

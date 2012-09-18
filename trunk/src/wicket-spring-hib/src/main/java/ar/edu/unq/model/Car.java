@@ -22,19 +22,19 @@ public class Car extends Entity {
 	}
 
 	public String getBrand() {
-		return this.brand;
+		return brand;
 	}
 
 	public int getOccupeds() {
-		return this.occupeds;
+		return occupeds;
 	}
 
 	public Person getOwner() {
-		return this.owner;
+		return owner;
 	}
 
 	public Date getSince() {
-		return this.since;
+		return since;
 	}
 
 	public void setBrand(final String brand) {

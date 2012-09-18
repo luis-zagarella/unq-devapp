@@ -49,7 +49,7 @@ public class CRUDUpdateCarBodyPage extends CRUDUpdateBodyPage<Car> {
 	}
 
 	public PersonService getPersonService() {
-		return this.personService;
+		return personService;
 	}
 
 	public void setPersonService(final PersonService personService) {

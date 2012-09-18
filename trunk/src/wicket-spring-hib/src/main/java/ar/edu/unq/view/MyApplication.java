@@ -27,7 +27,7 @@ public class MyApplication extends AuthenticatedWebApplication {
 	}
 
 	public GeneralService getGeneralService() {
-		return this.generalService;
+		return generalService;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class MyApplication extends AuthenticatedWebApplication {
 
 	@Override
 	public void init() {
-		this.aMounterURL = new MounterURL(this);
+		aMounterURL = new MounterURL(this);
 		this.getComponentInstantiationListeners().add(
 				new SpringComponentInjector(this));
 		this.mountUrl("home", Home.class, "");
@@ -72,7 +72,7 @@ public class MyApplication extends AuthenticatedWebApplication {
 	private void mountUrl(final String mountPath,
 			final Class<? extends WebPage> pageClass,
 			final String... parameters) {
-		this.aMounterURL.mount(mountPath, pageClass, parameters);
+		aMounterURL.mount(mountPath, pageClass, parameters);
 	}
 
 	public void setGeneralService(final GeneralService generalService) {
