@@ -264,13 +264,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+<!--
 		<dependency>
 			<groupId>org.log4jdbc</groupId>
 			<artifactId>log4jdbc</artifactId>
 			<version>4.1.2</version>
 		</dependency>
-
+-->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -350,25 +350,16 @@
 		<build>
 			<plugins>
 				<plugin>
-					<groupId>org.codehaus.cargo</groupId>
-					<artifactId>cargo-maven2-plugin</artifactId>
-		
+					  <groupId>org.codehaus.cargo</groupId>
+  					<artifactId>cargo-maven2-plugin</artifactId>
+
 					<configuration>
-						<wait>true</wait>
-						<container>
-							<containerId>tomcat6x</containerId>
-							<type>remote</type>
-						</container>
-			
-						<configuration>
-							<type>runtime</type>
-							<properties>
-								<cargo.hostname>${deploy.hostname}</cargo.hostname>
-                                                                 <cargo.servlet.port>${deploy.port}</cargo.servlet.port>
-								<cargo.remote.username>tomcat-deploy</cargo.remote.username>
-								<cargo.remote.password>tomcat-deploy</cargo.remote.password>
-							</properties>
-						</configuration>
+				
+						   <container>
+						     <containerId>jetty6x</containerId>
+						     <type>embedded</type>
+						   </container>
+						
 			
 							<deployables>
 								<deployable>
@@ -385,36 +376,21 @@
 
 						
 						<executions>
-							<execution>
-								<id>start-container</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>deployer-deploy</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>stop-container</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>deployer-undeploy</goal>
-									
-								</goals>
-							</execution>
-							<execution>
-								<id>verify-deploy</id>
-								<phase>install</phase>
-								<goals>
-									<goal>deployer-deploy</goal>
-								</goals>
-							</execution> 
-							<execution>
-								<id>clean-undeploy</id>
-								<phase>pre-clean</phase>
-								<goals>
-									<goal>deployer-undeploy</goal>
-								</goals>
-							</execution> 
-						</executions>
+						    <execution>
+						      <id>start-container</id>
+						      <phase>pre-integration-test</phase>
+						      <goals>
+							<goal>start</goal>
+						      </goals>
+						    </execution>
+						    <execution>
+						      <id>stop-container</id>
+						      <phase>post-integration-test</phase>
+						      <goals>
+							<goal>stop</goal>
+						      </goals>
+						    </execution>
+						  </executions>
 					</configuration>
 				</plugin>
 
