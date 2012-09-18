@@ -6,11 +6,11 @@ public class GeneralService {
 	private PersonService personService;
 
 	public CarService getCarService() {
-		return this.carService;
+		return carService;
 	}
 
 	public PersonService getPersonService() {
-		return this.personService;
+		return personService;
 	}
 
 	public void setCarService(final CarService carService) {

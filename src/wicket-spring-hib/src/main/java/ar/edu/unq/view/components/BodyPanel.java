@@ -16,7 +16,7 @@ public class BodyPanel extends Panel {
 	}
 
 	public Home getHome() {
-		return this.home;
+		return home;
 	}
 
 	public void sendMessage(final AjaxRequestTarget target, final String message) {

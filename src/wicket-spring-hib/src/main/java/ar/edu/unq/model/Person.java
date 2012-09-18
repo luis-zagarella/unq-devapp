@@ -26,15 +26,15 @@ public class Person extends Entity {
 	}
 
 	public int getAge() {
-		return this.age;
+		return age;
 	}
 
 	public List<Car> getCars() {
-		return this.cars;
+		return cars;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setAge(final int age) {

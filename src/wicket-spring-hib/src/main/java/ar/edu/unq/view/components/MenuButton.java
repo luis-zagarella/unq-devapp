@@ -51,7 +51,7 @@ public class MenuButton extends Panel implements IHeaderContributor {
 	}
 
 	public Home getHome() {
-		return this.home;
+		return home;
 	}
 
 	@Override

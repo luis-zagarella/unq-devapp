@@ -32,7 +32,7 @@ public class CRUDCreatePersonBodyPage extends CRUDCreateBodyPage<Person> {
 	}
 
 	public CarService getCarService() {
-		return this.carService;
+		return carService;
 	}
 
 	public void setCarService(final CarService carService) {

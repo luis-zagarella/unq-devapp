@@ -16,11 +16,11 @@ public class MenuButtonModel implements Serializable {
 	}
 
 	public BodyPanel getBodyPage() {
-		return this.bodyPage;
+		return bodyPage;
 	}
 
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
 	public void setBodyPage(final BodyPanel bodyPage) {

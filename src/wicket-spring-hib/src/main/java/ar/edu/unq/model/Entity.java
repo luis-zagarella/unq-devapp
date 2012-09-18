@@ -7,7 +7,7 @@ public abstract class Entity implements Serializable {
 	private int id;
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(final int id) {

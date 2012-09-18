@@ -72,7 +72,7 @@ public class CRUDUpdatePersonBodyPage extends CRUDUpdateBodyPage<Person> {
 	}
 
 	public CarService getCarService() {
-		return this.carService;
+		return carService;
 	}
 
 	public List<Car> getPersonCars() {
