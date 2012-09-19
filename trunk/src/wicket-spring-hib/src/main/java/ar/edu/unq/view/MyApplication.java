@@ -18,10 +18,6 @@ public class MyApplication extends AuthenticatedWebApplication {
 	private MounterURL aMounterURL;
 	private GeneralService generalService;
 
-	public MyApplication() {
-		super();
-	}
-
 	public String getContextPath() {
 		return this.getServletContext().getContextPath();
 	}
