@@ -75,10 +75,6 @@ public abstract class CRUDCreateBodyPage<T> extends BodyPanel {
 
 	protected abstract T createEmptyObject();
 
-	protected void dummyMethod() {
-		// do nothing
-	}
-
 	public Form<T> getForm() {
 		return this.form;
 	}
