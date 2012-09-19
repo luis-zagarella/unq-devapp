@@ -41,8 +41,8 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 		this.addToForm(this.form);
 	}
 
-	private void addCancelButton(final Form<T> form) {
-		form.add(new AjaxFallbackLink<CRUDCreateBodyPage<T>>("cancelButton",
+	private void addCancelButton(final Form<T> aForm) {
+		aForm.add(new AjaxFallbackLink<CRUDCreateBodyPage<T>>("cancelButton",
 				new PropertyModel<CRUDCreateBodyPage<T>>(this, "dummyMethod")) {
 			private static final long serialVersionUID = -8949442308458919782L;
 
@@ -66,12 +66,12 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 
 			@Override
 			protected void onError(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aForm) {
 			}
 
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aForm) {
 				CRUDUpdateBodyPage.this.getForm().setModel(
 						new CompoundPropertyModel<T>(CRUDUpdateBodyPage.this
 								.getChoice()));
@@ -85,28 +85,28 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 		this.add(this.selectorForm);
 	}
 
-	private void addSelector(final Form<T> form) {
+	private void addSelector(final Form<T> aForm) {
 		IModel<T> model = new PropertyModel<T>(this, "choice");
-		form.add(new DropDownChoice<T>("choices", model, this.getChoices(),
+		aForm.add(new DropDownChoice<T>("choices", model, this.getChoices(),
 				this.getRenderer()));
 	}
 
-	private void addSubmit(final Form<T> form) {
-		form.add(new AjaxSubmitLink("updateButton") {
+	private void addSubmit(final Form<T> aForm) {
+		aForm.add(new AjaxSubmitLink("updateButton") {
 
 			private static final long serialVersionUID = 2442800141852634117L;
 
 			@Override
 			protected void onError(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aForm) {
 			}
 
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aForm) {
 				CRUDUpdateBodyPage.this.getService().update(
 						CRUDUpdateBodyPage.this.getChoice());
-				CRUDUpdateBodyPage.this.resetForms(form);
+				CRUDUpdateBodyPage.this.resetForms(aForm);
 				CRUDUpdateBodyPage.this.sendMessage(target,
 						"crud.update.message.success");
 			}
@@ -145,9 +145,9 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 		this.add(this.form);
 	}
 
-	private void resetForms(final Form<?> form) {
+	private void resetForms(final Form<?> aForm) {
 		CRUDUpdateBodyPage.this.setChoice(null);
-		form.modelChanged();
+		aForm.modelChanged();
 		CRUDUpdateBodyPage.this.selectorForm.modelChanged();
 		this.form.setVisible(false);
 	}

@@ -63,14 +63,14 @@ public class Home extends WebPage {
 	}
 
 	public void changeBodyPageWithMessage(final BodyPanel aBodyPage,
-			final String message, final AjaxRequestTarget target) {
+			final String aMessage, final AjaxRequestTarget target) {
 
 		this.changeBodyPage(aBodyPage, target);
 		target.appendJavaScript("$(function() {"
 				+ "				$('#dialog').dialog('open');"//
 				+ "				 return false;"//
 				+ "				 });");
-		this.replaceMessage(message);
+		this.replaceMessage(aMessage);
 		target.add(this.getMessage());
 	}
 
@@ -137,9 +137,9 @@ public class Home extends WebPage {
 		this.addMenu();
 	}
 
-	private void replaceMessage(final String message) {
+	private void replaceMessage(final String aMessage) {
 		Label replacement = new Label("messageDialog", new ResourceModel(
-				message));
+				aMessage));
 		replacement.setOutputMarkupId(true);
 		this.setOutputMarkupPlaceholderTag(true);
 		this.getMessage().replaceWith(replacement);
