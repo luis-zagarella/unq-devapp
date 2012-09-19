@@ -8,7 +8,10 @@ import java.util.Date;
 import org.apache.wicket.WicketRuntimeException;
 
 public class DateUtils {
-
+	
+	private DateUtils(){
+		
+	}
 	public static Date getDate(final String pattern) {
 
 		try {

@@ -35,8 +35,8 @@ public class CRUDDeleteBodyPage<T> extends BodyPanel {
 		this.initialize();
 	}
 
-	private void addCancelButton(final Form<T> form) {
-		form.add(new AjaxFallbackLink<CRUDCreateBodyPage<T>>("cancelButton",
+	private void addCancelButton(final Form<T> aForm) {
+		aForm.add(new AjaxFallbackLink<CRUDCreateBodyPage<T>>("cancelButton",
 				new PropertyModel<CRUDCreateBodyPage<T>>(this, "dummyMethod")) {
 			private static final long serialVersionUID = -8949442308458919782L;
 
@@ -49,27 +49,27 @@ public class CRUDDeleteBodyPage<T> extends BodyPanel {
 		});
 	}
 
-	private void addChoices(final Form<T> form) {
+	private void addChoices(final Form<T> aForm) {
 		IModel<T> model = new PropertyModel<T>(this, "choice");
-		form.add(new DropDownChoice<T>("choice", model, this.getChoices(), this
+		aForm.add(new DropDownChoice<T>("choice", model, this.getChoices(), this
 				.getRenderer()));
 	}
 
-	private void addSubmit(final Form<T> form) {
+	private void addSubmit(final Form<T> aForm) {
 		form.add(new AjaxSubmitLink("deleteButton") {
 
 			private static final long serialVersionUID = 2442800141852634117L;
 
 			@Override
 			protected void onError(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aFormOnError) {
 				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+					final Form<?> aForm) {
 				CRUDDeleteBodyPage.this.getService().delete(
 						CRUDDeleteBodyPage.this.getChoice());
 

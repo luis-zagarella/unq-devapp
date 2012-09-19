@@ -1,10 +1,6 @@
 package ar.edu.unq;
 
-import org.apache.log4j.Logger;
-
 public class Person {
-
-	private static final Logger LOG = Logger.getLogger(Person.class);
 
 	private String name;
 
