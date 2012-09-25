@@ -8,6 +8,7 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+
 	<name>UNQ Maven POM</name>
 
 	<description>UNQ Maven POM</description>
@@ -23,6 +24,7 @@
 			and executions (for inherited build/plugins). Also, configuration that is 
 			used for execution can be placed here, notably however, configuration for 
 			REPORTING won't work here. -->
+
 		<pluginManagement>
 			<plugins>
 				<!-- Apache Maven official plugins -->
