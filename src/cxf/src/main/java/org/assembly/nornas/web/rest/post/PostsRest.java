@@ -24,21 +24,23 @@ import org.assembly.nornas.repository.PostRepository;
  */
 @Path("/posts")
 public class PostsRest {
+    
+    public static final int NUMBER_OF_POST = 10;
+
+    private PostRepository postDAO;
 
     @GET
     @Path("/{from}")
     @Produces("application/json")
-    public List<Post> findPostsPublishedByBlogId(@PathParam("from") final Integer from,
-            @DefaultValue(StringUtils.EMPTY) @QueryParam("tag") final String tag) {
-        List<Post> posts = postDAO.getPosts(from * NUMBER_OF_POST, NUMBER_OF_POST, tag);
+    public List<Post> findPostsPublishedByBlogId(@PathParam("from") final Integer from) {
+        List<Post> posts = postDAO.getPosts(from, NUMBER_OF_POST, "");
         return posts;
     }
 
     @GET
     @Path("/byAuthor/{id}")
     @Produces("application/json")
-    public List<Post> findPostsPublishedByAuthorId(@PathParam("id") final String id,
-            @DefaultValue(StringUtils.EMPTY) @QueryParam("tag") final String tag) {
+    public List<Post> findPostsPublishedByAuthorId(@PathParam("id") final String id) {
         List<Post> posts = postDAO.getPosts(id);
         return posts;
     }
@@ -57,9 +59,7 @@ public class PostsRest {
         return postDAO.getTags();
     }
 
-    public static final int NUMBER_OF_POST = 10;
 
-    private PostRepository postDAO;
 
     public void setPostDAO(final PostRepository postDAO) {
         this.postDAO = postDAO;
