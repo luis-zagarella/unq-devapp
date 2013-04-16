@@ -15,64 +15,59 @@ import ar.edu.unq.utils.DateUtils;
 
 public class MyApplication extends AuthenticatedWebApplication {
 
-	private MounterURL aMounterURL;
-	private GeneralService generalService;
+    private MounterURL aMounterURL;
 
-	public String getContextPath() {
-		return this.getServletContext().getContextPath();
-	}
+    private GeneralService generalService;
 
-	public GeneralService getGeneralService() {
-		return generalService;
-	}
+    public String getContextPath() {
+        return this.getServletContext().getContextPath();
+    }
 
-	@Override
-	public Class<? extends Page> getHomePage() {
-		return Home.class;
-	}
+    public GeneralService getGeneralService() {
+        return generalService;
+    }
 
-	@Override
-	protected Class<? extends WebPage> getSignInPageClass() {
-		return Home.class;
-	}
+    @Override
+    public Class<? extends Page> getHomePage() {
+        return Home.class;
+    }
 
-	@Override
-	protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
-		return WebSession.class;
-	}
+    @Override
+    protected Class<? extends WebPage> getSignInPageClass() {
+        return Home.class;
+    }
 
-	@Override
-	public void init() {
-		aMounterURL = new MounterURL(this);
-		this.getComponentInstantiationListeners().add(
-				new SpringComponentInjector(this));
-		this.mountUrl("home", Home.class, "");
-		this.initializeModel();
-	}
+    @Override
+    protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
+        return WebSession.class;
+    }
 
-	private void initializeModel() {
-		CarService carService = this.getGeneralService().getCarService();
-		Car fiatPunto = new Car("Fiat Punto", 4,
-				DateUtils.getDate("10/11/2012"));
-		carService.save(fiatPunto);
-		carService.save(new Car("Peugeot 206", 4, DateUtils
-				.getDate("01/12/2000")));
-		PersonService personService = this.getGeneralService()
-				.getPersonService();
-		Person leandro = new Person("Leandro", 26);
-		personService.save(leandro);
-		personService.save(new Person("Jesica", 25));
-		fiatPunto.setOwner(leandro);
-	}
+    @Override
+    public void init() {
+        aMounterURL = new MounterURL(this);
+        this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
+        this.mountUrl("home", Home.class, "");
+        this.initializeModel();
+    }
 
-	private void mountUrl(final String mountPath,
-			final Class<? extends WebPage> pageClass,
-			final String... parameters) {
-		aMounterURL.mount(mountPath, pageClass, parameters);
-	}
+    private void initializeModel() {
+        CarService carService = this.getGeneralService().getCarService();
+        Car fiatPunto = new Car("Fiat Punto", 4, DateUtils.getDate("10/11/2012"));
+        carService.save(fiatPunto);
+        carService.save(new Car("Peugeot 206", 4, DateUtils.getDate("01/12/2000")));
+        PersonService personService = this.getGeneralService().getPersonService();
+        Person leandro = new Person("Leandro", 26);
+        personService.save(leandro);
+        personService.save(new Person("Jesica", 25));
+        fiatPunto.setOwner(leandro);
+    }
 
-	public void setGeneralService(final GeneralService generalService) {
-		this.generalService = generalService;
-	}
+    private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
+        aMounterURL.mount(mountPath, pageClass, parameters);
+    }
+
+    public void setGeneralService(final GeneralService generalService) {
+        this.generalService = generalService;
+    }
 
 }
