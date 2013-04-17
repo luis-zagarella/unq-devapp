@@ -45,21 +45,28 @@ public class MyApplication extends AuthenticatedWebApplication {
     @Override
     public void init() {
         aMounterURL = new MounterURL(this);
+        // Linea magica //
         this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
+        // ////////////////
+
         this.mountUrl("home", Home.class, "");
+
         this.initializeModel();
     }
 
     private void initializeModel() {
+
         CarService carService = this.getGeneralService().getCarService();
-        Car fiatPunto = new Car("Fiat Punto", 4, DateUtils.getDate("10/11/2012"));
-        carService.save(fiatPunto);
-        carService.save(new Car("Peugeot 206", 4, DateUtils.getDate("01/12/2000")));
-        PersonService personService = this.getGeneralService().getPersonService();
-        Person leandro = new Person("Leandro", 26);
-        personService.save(leandro);
-        personService.save(new Person("Jesica", 25));
-        fiatPunto.setOwner(leandro);
+        if (carService.retriveAll().isEmpty()) {
+            Car fiatPunto = new Car("Fiat Punto", 4, DateUtils.getDate("10/11/2012"));
+            carService.save(fiatPunto);
+            carService.save(new Car("Peugeot 206", 4, DateUtils.getDate("01/12/2000")));
+            PersonService personService = this.getGeneralService().getPersonService();
+            Person leandro = new Person("Leandro", 26);
+            personService.save(leandro);
+            personService.save(new Person("Jesica", 25));
+            fiatPunto.setOwner(leandro);
+        }
     }
 
     private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {

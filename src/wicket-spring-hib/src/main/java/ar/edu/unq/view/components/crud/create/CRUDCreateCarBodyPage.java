@@ -3,6 +3,7 @@ package ar.edu.unq.view.components.crud.create;
 import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.model.Car;
 import ar.edu.unq.services.CRUDCreateService;
@@ -12,6 +13,7 @@ public class CRUDCreateCarBodyPage extends CRUDCreateBodyPage<Car> {
 
 	private static final long serialVersionUID = -5517883757645818649L;
 
+	
 	public CRUDCreateCarBodyPage(final CRUDCreateService<Car> service,
 			final Home home) {
 		super(service, home);
