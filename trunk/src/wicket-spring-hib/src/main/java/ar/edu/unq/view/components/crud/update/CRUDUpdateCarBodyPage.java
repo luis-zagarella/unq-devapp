@@ -12,7 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.model.Car;
 import ar.edu.unq.model.Person;
-import ar.edu.unq.services.CRUDUpdateService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.services.PersonService;
 import ar.edu.unq.view.Home;
 
@@ -22,7 +22,7 @@ public class CRUDUpdateCarBodyPage extends CRUDUpdateBodyPage<Car> {
 	private PersonService personService;
 
 	public CRUDUpdateCarBodyPage(final Home home,
-			final CRUDUpdateService<Car> service, final String displayProperty) {
+			final GenericService<Car> service, final String displayProperty) {
 		super(home, service, displayProperty);
 
 	}

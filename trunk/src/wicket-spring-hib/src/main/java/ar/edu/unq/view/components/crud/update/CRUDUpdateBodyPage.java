@@ -13,7 +13,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
-import ar.edu.unq.services.CRUDUpdateService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.view.Home;
 import ar.edu.unq.view.components.BodyPanel;
 import ar.edu.unq.view.components.crud.create.CRUDCreateBodyPage;
@@ -25,10 +25,10 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 	private final String displayProperty;
 	private Form<T> form;
 	private Form<T> selectorForm;
-	private final CRUDUpdateService<T> service;
+	private final GenericService<T> service;
 
 	public CRUDUpdateBodyPage(final Home home,
-			final CRUDUpdateService<T> service, final String displayProperty) {
+			final GenericService<T> service, final String displayProperty) {
 		super(home);
 		this.displayProperty = displayProperty;
 		this.service = service;
@@ -135,7 +135,7 @@ public abstract class CRUDUpdateBodyPage<T> extends BodyPanel {
 		return new ChoiceRenderer<T>(this.getDisplayProperty());
 	}
 
-	public CRUDUpdateService<T> getService() {
+	public GenericService<T> getService() {
 		return this.service;
 	}
 

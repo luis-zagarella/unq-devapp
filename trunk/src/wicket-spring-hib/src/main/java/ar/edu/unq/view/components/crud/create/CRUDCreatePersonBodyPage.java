@@ -5,8 +5,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.model.Person;
-import ar.edu.unq.services.CRUDCreateService;
 import ar.edu.unq.services.CarService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.view.Home;
 
 public class CRUDCreatePersonBodyPage extends CRUDCreateBodyPage<Person> {
@@ -15,7 +15,7 @@ public class CRUDCreatePersonBodyPage extends CRUDCreateBodyPage<Person> {
 	@SpringBean(name = "services.car")
 	private CarService carService;
 
-	public CRUDCreatePersonBodyPage(final CRUDCreateService<Person> service,
+	public CRUDCreatePersonBodyPage(final GenericService<Person> service,
 			final Home home) {
 		super(service, home);
 	}

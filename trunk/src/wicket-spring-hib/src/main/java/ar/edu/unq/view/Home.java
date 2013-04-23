@@ -30,7 +30,7 @@ public class Home extends WebPage {
 	private static final long serialVersionUID = 6007296848816900008L;
 	private BodyPanel bodyPage;
 	
-	@SpringBean(name = "services.person")
+	@SpringBean(name = "services.general")
 	private GeneralService generalService;
 
 	private LoadingPanel loadingPanel;
