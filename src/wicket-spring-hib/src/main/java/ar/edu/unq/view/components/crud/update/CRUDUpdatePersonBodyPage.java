@@ -16,8 +16,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.model.Car;
 import ar.edu.unq.model.Person;
-import ar.edu.unq.services.CRUDUpdateService;
 import ar.edu.unq.services.CarService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.view.Home;
 
 public class CRUDUpdatePersonBodyPage extends CRUDUpdateBodyPage<Person> {
@@ -27,7 +27,7 @@ public class CRUDUpdatePersonBodyPage extends CRUDUpdateBodyPage<Person> {
 	private CarService carService;
 
 	public CRUDUpdatePersonBodyPage(final Home home,
-			final CRUDUpdateService<Person> service,
+			final GenericService<Person> service,
 			final String displayProperty) {
 		super(home, service, displayProperty);
 	}

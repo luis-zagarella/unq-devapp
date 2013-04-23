@@ -10,7 +10,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 
-import ar.edu.unq.services.CRUDDeleteService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.view.Home;
 import ar.edu.unq.view.components.BodyPanel;
 import ar.edu.unq.view.components.crud.create.CRUDCreateBodyPage;
@@ -25,9 +25,9 @@ public class CRUDDeleteBodyPage<T> extends BodyPanel {
 
 	private Form<T> form;
 
-	private CRUDDeleteService<T> service;
+	private GenericService<T> service;
 
-	public CRUDDeleteBodyPage(final CRUDDeleteService<T> service,
+	public CRUDDeleteBodyPage(final GenericService<T> service,
 			final String displayExpression, final Home home) {
 		super(home);
 		this.displayExpression = displayExpression;
@@ -101,7 +101,7 @@ public class CRUDDeleteBodyPage<T> extends BodyPanel {
 		return new ChoiceRenderer<T>(this.getDisplayExpression());
 	}
 
-	public CRUDDeleteService<T> getService() {
+	public GenericService<T> getService() {
 		return this.service;
 	}
 
@@ -121,7 +121,7 @@ public class CRUDDeleteBodyPage<T> extends BodyPanel {
 		this.form = form;
 	}
 
-	public void setService(final CRUDDeleteService<T> service) {
+	public void setService(final GenericService<T> service) {
 		this.service = service;
 	}
 

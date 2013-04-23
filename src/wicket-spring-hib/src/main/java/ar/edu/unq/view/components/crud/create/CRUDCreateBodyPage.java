@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
-import ar.edu.unq.services.CRUDCreateService;
+import ar.edu.unq.services.GenericService;
 import ar.edu.unq.view.Home;
 import ar.edu.unq.view.components.BodyPanel;
 
@@ -19,9 +19,9 @@ public abstract class CRUDCreateBodyPage<T> extends BodyPanel {
 
 	private T formModel;
 
-	private CRUDCreateService<T> service;
+	private GenericService<T> service;
 
-	public CRUDCreateBodyPage(final CRUDCreateService<T> service,
+	public CRUDCreateBodyPage(final GenericService<T> service,
 			final Home home) {
 		super(home);
 		this.setService(service);
@@ -83,7 +83,7 @@ public abstract class CRUDCreateBodyPage<T> extends BodyPanel {
 		return this.formModel;
 	}
 
-	public CRUDCreateService<T> getService() {
+	public GenericService<T> getService() {
 		return this.service;
 	}
 
@@ -91,7 +91,7 @@ public abstract class CRUDCreateBodyPage<T> extends BodyPanel {
 		this.formModel = formModel;
 	}
 
-	private void setService(final CRUDCreateService<T> service) {
+	private void setService(final GenericService<T> service) {
 		this.service = service;
 	}
 
