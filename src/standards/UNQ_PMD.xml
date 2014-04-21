@@ -7,10 +7,10 @@
   <rule ref="rulesets/coupling.xml/ExcessiveImports"/>
   <rule ref="rulesets/coupling.xml/LooseCoupling"/>
 -->
-   <rule ref="rulesets/braces.xml/IfStmtsMustUseBraces"/>
-   <rule ref="rulesets/braces.xml/WhileLoopsMustUseBraces"/>
-   <rule ref="rulesets/braces.xml/IfElseStmtsMustUseBraces"/>
-   <rule ref="rulesets/braces.xml/ForLoopsMustUseBraces"/>
+   <rule ref="rulesets/java/braces.xml/IfStmtsMustUseBraces"/>
+   <rule ref="rulesets/java/braces.xml/WhileLoopsMustUseBraces"/>
+   <rule ref="rulesets/java/braces.xml/IfElseStmtsMustUseBraces"/>
+   <rule ref="rulesets/java/braces.xml/ForLoopsMustUseBraces"/>
    <rule ref="rulesets/design.xml/SimplifyBooleanReturns"/>
    <rule ref="rulesets/design.xml/SimplifyBooleanExpressions"/>
    <rule ref="rulesets/design.xml/SwitchStmtsShouldHaveDefault"/>
