@@ -15,7 +15,7 @@
 	<description>UNQ Maven POM</description>
 
 	<properties>
-		<targetJdkVersion>1.6</targetJdkVersion>
+		<targetJdkVersion>1.7</targetJdkVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<locale>ar</locale>
 	</properties>
@@ -32,7 +32,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.0-beta-1</version>
+			<!--		<version>1.0-beta-1</version> -->
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -144,6 +144,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.1</version>
 			<!--				<version>2.5</version> -->
 				</plugin>
 				<plugin>
