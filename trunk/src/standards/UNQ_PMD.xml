@@ -169,7 +169,6 @@
    <rule ref="rulesets/java/junit.xml/SimplifyBooleanAssertion"/>
    <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
    <rule ref="rulesets/java/controversial.xml/NullAssignment"/>
-   <rule ref="rulesets/java/controversial.xml/UnusedModifier"/>
    <rule ref="rulesets/java/controversial.xml/AssignmentInOperand"/>
    <rule ref="rulesets/java/controversial.xml/DontImportSun"/>
    <rule ref="rulesets/java/controversial.xml/SuspiciousOctalEscape"/>
