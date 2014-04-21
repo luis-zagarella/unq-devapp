@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="UNQ_PMD_new" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
    <description>UNQ</description>
-   <rule ref="rulesets/typeresolution.xml/LooseCoupling"/>
-   <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable"/>
-   <rule ref="rulesets/typeresolution.xml/UnusedImports"/>
-   <rule ref="rulesets/typeresolution.xml/SignatureDeclareThrowsException"/>
+  
+
+     <rule ref="rulesets/coupling.xml/CouplingBetweenObjects"/>
+  <rule ref="rulesets/coupling.xml/ExcessiveImports"/>
+  <rule ref="rulesets/coupling.xml/LooseCoupling"/>
+
    <rule ref="rulesets/braces.xml/IfStmtsMustUseBraces"/>
    <rule ref="rulesets/braces.xml/WhileLoopsMustUseBraces"/>
    <rule ref="rulesets/braces.xml/IfElseStmtsMustUseBraces"/>
