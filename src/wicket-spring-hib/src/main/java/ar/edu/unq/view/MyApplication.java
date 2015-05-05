@@ -45,7 +45,7 @@ public class MyApplication extends AuthenticatedWebApplication {
     @Override
     public void init() {
         aMounterURL = new MounterURL(this);
-        // Linea magica //
+        // Linea mágica ///
         this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         // ////////////////
 
@@ -64,8 +64,9 @@ public class MyApplication extends AuthenticatedWebApplication {
             PersonService personService = this.getGeneralService().getPersonService();
             Person leandro = new Person("Leandro", 26);
             personService.save(leandro);
-            personService.save(new Person("Jesica", 25));
             fiatPunto.setOwner(leandro);
+            personService.save(new Person("Jesica", 25));
+
         }
     }
 
